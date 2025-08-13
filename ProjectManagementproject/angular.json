@@ -25,9 +25,38 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/examples.css",
+              "src/assets/css/style.css",
+              "src/assets/vendors/simplebar/css/simplebar.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/main.js",
+              "src/assets/js/calendar.js",
+              "src/assets/js/charts.js",
+              "src/assets/js/color-modes.js",
+              "src/assets/js/colors.js",
+              "src/assets/js/config.js",
+              "src/assets/js/datatables.js",
+              "src/assets/js/google-maps.js",
+              "src/assets/js/i18next.js",
+              "src/assets/js/loading-buttons.js",
+              "src/assets/js/multi-select.js",
+              "src/assets/js/popovers.js",
+              "src/assets/js/toasts.js",
+              "src/assets/js/tooltips.js",
+              "src/assets/js/widgets.js",
+              "src/assets/vendors/jquery/js/jquery.min.js",
+              "src/assets/vendors/simplebar/js/simplebar.min.js",
+              "src/assets/vendors/i18next-http-backend/js/i18nextHttpBackend.js",
+              "src/assets/vendors/i18next-browser-languagedetector/js/i18nextBrowserLanguageDetector.js",
+              "src/assets/vendors/i18next/js/i18next.min.js",
+              "src/assets/vendors/fullcalendar/js/index.global.min.js",
+              "src/assets/vendors/datatables.net-bs5/js/dataTables.bootstrap5.min.js",
+              "src/assets/vendors/datatables.net/js/dataTables.min.js"
+
+
+            ]
           },
           "configurations": {
             "production": {
@@ -94,5 +123,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

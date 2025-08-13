@@ -1,0 +1,190 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\PojectManagement\\projectmanagementtoolProject\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3FE1A763-5F2C-44B9-A5E2-63B3771EB7BC}|projectmanagementtoolProject\\projectmanagementtoolProject.csproj|d:\\pojectmanagement\\projectmanagementtoolproject\\projectmanagementtoolproject\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FE1A763-5F2C-44B9-A5E2-63B3771EB7BC}|projectmanagementtoolProject\\projectmanagementtoolProject.csproj|solutionrelative:projectmanagementtoolproject\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FE1A763-5F2C-44B9-A5E2-63B3771EB7BC}|projectmanagementtoolProject\\projectmanagementtoolProject.csproj|d:\\pojectmanagement\\projectmanagementtoolproject\\projectmanagementtoolproject\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FE1A763-5F2C-44B9-A5E2-63B3771EB7BC}|projectmanagementtoolProject\\projectmanagementtoolProject.csproj|solutionrelative:projectmanagementtoolproject\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FE1A763-5F2C-44B9-A5E2-63B3771EB7BC}|projectmanagementtoolProject\\projectmanagementtoolProject.csproj|d:\\pojectmanagement\\projectmanagementtoolproject\\projectmanagementtoolproject\\dtos\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FE1A763-5F2C-44B9-A5E2-63B3771EB7BC}|projectmanagementtoolProject\\projectmanagementtoolProject.csproj|solutionrelative:projectmanagementtoolproject\\dtos\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FE1A763-5F2C-44B9-A5E2-63B3771EB7BC}|projectmanagementtoolProject\\projectmanagementtoolProject.csproj|d:\\pojectmanagement\\projectmanagementtoolproject\\projectmanagementtoolproject\\dtos\\loginstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FE1A763-5F2C-44B9-A5E2-63B3771EB7BC}|projectmanagementtoolProject\\projectmanagementtoolProject.csproj|solutionrelative:projectmanagementtoolproject\\dtos\\loginstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FE1A763-5F2C-44B9-A5E2-63B3771EB7BC}|projectmanagementtoolProject\\projectmanagementtoolProject.csproj|d:\\pojectmanagement\\projectmanagementtoolproject\\projectmanagementtoolproject\\controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FE1A763-5F2C-44B9-A5E2-63B3771EB7BC}|projectmanagementtoolProject\\projectmanagementtoolProject.csproj|solutionrelative:projectmanagementtoolproject\\controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FE1A763-5F2C-44B9-A5E2-63B3771EB7BC}|projectmanagementtoolProject\\projectmanagementtoolProject.csproj|d:\\pojectmanagement\\projectmanagementtoolproject\\projectmanagementtoolproject\\models\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FE1A763-5F2C-44B9-A5E2-63B3771EB7BC}|projectmanagementtoolProject\\projectmanagementtoolProject.csproj|solutionrelative:projectmanagementtoolproject\\models\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FE1A763-5F2C-44B9-A5E2-63B3771EB7BC}|projectmanagementtoolProject\\projectmanagementtoolProject.csproj|d:\\pojectmanagement\\projectmanagementtoolproject\\projectmanagementtoolproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FE1A763-5F2C-44B9-A5E2-63B3771EB7BC}|projectmanagementtoolProject\\projectmanagementtoolProject.csproj|solutionrelative:projectmanagementtoolproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FE1A763-5F2C-44B9-A5E2-63B3771EB7BC}|projectmanagementtoolProject\\projectmanagementtoolProject.csproj|d:\\pojectmanagement\\projectmanagementtoolproject\\projectmanagementtoolproject\\context\\projectdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FE1A763-5F2C-44B9-A5E2-63B3771EB7BC}|projectmanagementtoolProject\\projectmanagementtoolProject.csproj|solutionrelative:projectmanagementtoolproject\\context\\projectdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FE1A763-5F2C-44B9-A5E2-63B3771EB7BC}|projectmanagementtoolProject\\projectmanagementtoolProject.csproj|d:\\pojectmanagement\\projectmanagementtoolproject\\projectmanagementtoolproject\\models\\job.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FE1A763-5F2C-44B9-A5E2-63B3771EB7BC}|projectmanagementtoolProject\\projectmanagementtoolProject.csproj|solutionrelative:projectmanagementtoolproject\\models\\job.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FE1A763-5F2C-44B9-A5E2-63B3771EB7BC}|projectmanagementtoolProject\\projectmanagementtoolProject.csproj|d:\\pojectmanagement\\projectmanagementtoolproject\\projectmanagementtoolproject\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FE1A763-5F2C-44B9-A5E2-63B3771EB7BC}|projectmanagementtoolProject\\projectmanagementtoolProject.csproj|solutionrelative:projectmanagementtoolproject\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginStatus.cs",
+              "DocumentMoniker": "D:\\PojectManagement\\projectmanagementtoolProject\\projectmanagementtoolProject\\DTOs\\LoginStatus.cs",
+              "RelativeDocumentMoniker": "projectmanagementtoolProject\\DTOs\\LoginStatus.cs",
+              "ToolTip": "D:\\PojectManagement\\projectmanagementtoolProject\\projectmanagementtoolProject\\DTOs\\LoginStatus.cs",
+              "RelativeToolTip": "projectmanagementtoolProject\\DTOs\\LoginStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-13T08:05:27.519Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.cs",
+              "DocumentMoniker": "D:\\PojectManagement\\projectmanagementtoolProject\\projectmanagementtoolProject\\DTOs\\Login.cs",
+              "RelativeDocumentMoniker": "projectmanagementtoolProject\\DTOs\\Login.cs",
+              "ToolTip": "D:\\PojectManagement\\projectmanagementtoolProject\\projectmanagementtoolProject\\DTOs\\Login.cs",
+              "RelativeToolTip": "projectmanagementtoolProject\\DTOs\\Login.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-13T07:56:19.207Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthenticationController.cs",
+              "DocumentMoniker": "D:\\PojectManagement\\projectmanagementtoolProject\\projectmanagementtoolProject\\Controllers\\AuthenticationController.cs",
+              "RelativeDocumentMoniker": "projectmanagementtoolProject\\Controllers\\AuthenticationController.cs",
+              "ToolTip": "D:\\PojectManagement\\projectmanagementtoolProject\\projectmanagementtoolProject\\Controllers\\AuthenticationController.cs*",
+              "RelativeToolTip": "projectmanagementtoolProject\\Controllers\\AuthenticationController.cs*",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwCUAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-13T07:24:29.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Job.cs",
+              "DocumentMoniker": "D:\\PojectManagement\\projectmanagementtoolProject\\projectmanagementtoolProject\\Models\\Job.cs",
+              "RelativeDocumentMoniker": "projectmanagementtoolProject\\Models\\Job.cs",
+              "ToolTip": "D:\\PojectManagement\\projectmanagementtoolProject\\projectmanagementtoolProject\\Models\\Job.cs",
+              "RelativeToolTip": "projectmanagementtoolProject\\Models\\Job.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwB8AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T09:45:08.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "D:\\PojectManagement\\projectmanagementtoolProject\\projectmanagementtoolProject\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "projectmanagementtoolProject\\Controllers\\UsersController.cs",
+              "ToolTip": "D:\\PojectManagement\\projectmanagementtoolProject\\projectmanagementtoolProject\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "projectmanagementtoolProject\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T14:11:24.956Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProjectsController.cs",
+              "DocumentMoniker": "D:\\PojectManagement\\projectmanagementtoolProject\\projectmanagementtoolProject\\Controllers\\ProjectsController.cs",
+              "RelativeDocumentMoniker": "projectmanagementtoolProject\\Controllers\\ProjectsController.cs",
+              "ToolTip": "D:\\PojectManagement\\projectmanagementtoolProject\\projectmanagementtoolProject\\Controllers\\ProjectsController.cs",
+              "RelativeToolTip": "projectmanagementtoolProject\\Controllers\\ProjectsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-02T16:44:41.983Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\PojectManagement\\projectmanagementtoolProject\\projectmanagementtoolProject\\Models\\User.cs",
+              "RelativeDocumentMoniker": "projectmanagementtoolProject\\Models\\User.cs",
+              "ToolTip": "D:\\PojectManagement\\projectmanagementtoolProject\\projectmanagementtoolProject\\Models\\User.cs",
+              "RelativeToolTip": "projectmanagementtoolProject\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-02T13:50:29.111Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Project.cs",
+              "DocumentMoniker": "D:\\PojectManagement\\projectmanagementtoolProject\\projectmanagementtoolProject\\Models\\Project.cs",
+              "RelativeDocumentMoniker": "projectmanagementtoolProject\\Models\\Project.cs",
+              "ToolTip": "D:\\PojectManagement\\projectmanagementtoolProject\\projectmanagementtoolProject\\Models\\Project.cs",
+              "RelativeToolTip": "projectmanagementtoolProject\\Models\\Project.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-02T13:39:07.795Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\PojectManagement\\projectmanagementtoolProject\\projectmanagementtoolProject\\Program.cs",
+              "RelativeDocumentMoniker": "projectmanagementtoolProject\\Program.cs",
+              "ToolTip": "D:\\PojectManagement\\projectmanagementtoolProject\\projectmanagementtoolProject\\Program.cs",
+              "RelativeToolTip": "projectmanagementtoolProject\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-02T13:26:30.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProjectDBContext.cs",
+              "DocumentMoniker": "D:\\PojectManagement\\projectmanagementtoolProject\\projectmanagementtoolProject\\Context\\ProjectDBContext.cs",
+              "RelativeDocumentMoniker": "projectmanagementtoolProject\\Context\\ProjectDBContext.cs",
+              "ToolTip": "D:\\PojectManagement\\projectmanagementtoolProject\\projectmanagementtoolProject\\Context\\ProjectDBContext.cs",
+              "RelativeToolTip": "projectmanagementtoolProject\\Context\\ProjectDBContext.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-02T13:24:56.341Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

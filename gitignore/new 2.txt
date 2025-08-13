@@ -1,0 +1,3 @@
+SELECT * 
+FROM Projects 
+WHERE ownerId IN (SELECT id FROM Users);
