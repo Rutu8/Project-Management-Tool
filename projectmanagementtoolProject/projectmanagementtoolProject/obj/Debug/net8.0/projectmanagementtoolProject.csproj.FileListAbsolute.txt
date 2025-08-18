@@ -145,3 +145,4 @@ D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\ob
 D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\obj\Debug\net8.0\projectmanagementtoolProject.pdb
 D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\obj\Debug\net8.0\projectmanagementtoolProject.genruntimeconfig.cache
 D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\obj\Debug\net8.0\ref\projectmanagementtoolProject.dll
+D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

@@ -1,0 +1,49 @@
+  <nav aria-label="breadcrumb">
+            <ol class="breadcrumb m-2">
+              <li class="breadcrumb-item"><a routerLink="/admin" data-coreui-i18n="home">Home</a>
+              </li>
+              <li class="breadcrumb-item active"><span data-coreui-i18n="dashboard" routerLink="/admin/user">User</span>
+              </li>
+            </ol>
+          </nav>
+  <div class="container">
+  <div class="col-12">
+    <div class="card mb-4">
+      <div class="card-body">
+<form class="row g-3" [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
+  <div class="col-md-6">
+    <label class="form-label">Name</label>
+    <input type="text" class="form-control" formControlName="name">
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Email</label>
+    <div class="input-group">
+      <span class="input-group-text" id="inputGroupPrepend">@</span>
+      <input type="text" class="form-control" aria-describedby="inputGroupPrepend" formControlName="email">
+    </div>
+
+  </div>
+   <div class="col-md-4">
+    <label class="form-label">Mobile No</label>
+    <input type="text" class="form-control" formControlName="mobileNo"/>
+  </div>
+  <div class="col-md-4">
+    <label class="form-label">Password</label>
+    <input type="text" class="form-control" formControlName="password">
+  </div>
+  <div class="col-md-4">
+    <label class="form-label">User Type</label>
+    <select class="form-select" formControlName="usertype">
+      <option value="">Select</option>
+      <option>Admin</option>
+      <option>User</option>
+    </select>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </div>
+</form>
+</div>
+</div>
+</div>
+</div>

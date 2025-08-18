@@ -254,27 +254,6 @@
   },
   {
     "ContainingType": "projectmanagementtoolProject.Controllers.UsersController",
-    "Method": "Put",
-    "RelativePath": "api/Users",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "user",
-        "Type": "projectmanagementtoolProject.Models.User",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "projectmanagementtoolProject.Controllers.UsersController",
     "Method": "Get",
     "RelativePath": "api/Users/{id}",
     "HttpMethod": "GET",
@@ -284,6 +263,27 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "projectmanagementtoolProject.Controllers.UsersController",
+    "Method": "Put",
+    "RelativePath": "api/Users/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "user",
+        "Type": "projectmanagementtoolProject.Models.User",
         "IsRequired": true
       }
     ],

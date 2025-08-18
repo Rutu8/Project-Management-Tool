@@ -6,7 +6,10 @@ import { AdminModule } from './admin/admin.module';
 const routes: Routes = [
   {path:"", component:LoginComponent},
   {path:"login", component:LoginComponent},
-  {path:"admin", loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule)}
+  // {path:"login", component:LoginComponent},
+  {path:"admin", loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule)},
+  {path:"user", loadChildren:()=>import('./user/user.module').then(u=>u.UserModule)}
+
 ];
 
 @NgModule({

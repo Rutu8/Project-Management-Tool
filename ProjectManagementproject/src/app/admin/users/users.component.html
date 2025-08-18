@@ -1,1 +1,39 @@
-<p>users works!</p>
+<nav aria-label="breadcrumb">
+            <ol class="breadcrumb m-2">
+              <li class="breadcrumb-item"><a routerLink="/admin" data-coreui-i18n="home">Home</a>
+              </li>
+              <li class="breadcrumb-item active"><span data-coreui-i18n="dashboard" routerLink="/admin/users">Users</span>
+              </li>
+            </ol>
+          </nav>
+<div class="tab-content rounded-bottom">
+  <div class="text-end m-2 me-5">
+    <button class="btn btn-primary" routerLink="/admin/user">ADD User</button>
+  </div>
+                  <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1000">
+                    <table class="table table-striped border datatable">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Mobile No</th>
+                          <th>Password</th>
+                          <th>User Type</th>
+                          <th>Update</th>
+                          <th>Remove</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="align-middle" *ngFor="let user of users;let i= index">
+                          <td>{{user.name}}</td>
+                          <td>{{user.email}}</td>
+                          <td>{{user.mobileNo}}</td>
+                          <td>{{user.password}}</td>
+                          <td>{{user.usertype}}</td>
+                          <td><a class="btn btn-info" routerLink="/admin/user/{{user.id}}">Edit</a></td>
+                          <td><button class="btn btn-danger" (click)="delete(user.id)">Remove</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>

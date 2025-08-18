@@ -1,0 +1,19 @@
+<div class="container mt-2">
+<form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
+  <div class="col-md-4">
+    <label for="validationDefault01" class="form-label">Name:</label>
+    <input type="text" class="form-control" id="validationDefault01" formControlName="name">
+  </div>
+  <div class="mb-3">
+    <label for="validationTextarea" class="form-label">Description:</label>
+    <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" formControlName="description"></textarea>
+  </div>
+  <div class="col-md-4">
+    <label for="validationDefault01" class="form-label">OwnerId:</label>
+    <input type="text" class="form-control" id="validationDefault01" formControlName="ownerId">
+  </div>
+  <div class="mb-3">
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </div>
+</form>
+</div>

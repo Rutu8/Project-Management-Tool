@@ -15,7 +15,7 @@
         <!-- <button class="btn-close d-lg-none" type="button" data-coreui-theme="dark" aria-label="Close" onclick="coreui.Sidebar.getInstance(document.querySelector(&quot;#sidebar&quot;)).toggle()"></button> -->
       </div>
       <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
-        <li class="nav-item"><a class="nav-link" href="index.html">
+        <li class="nav-item"><a class="nav-link" routerLink="/admin">
             <svg class="nav-icon">
               <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speedometer"></use>
             </svg><span data-coreui-i18n="dashboard">Dashboard</span></a></li>
@@ -183,6 +183,37 @@
             <svg class="nav-icon">
               <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-description"></use>
             </svg><span data-coreui-i18n="docs">Docs</span></a></li> -->
+               <!-- <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
+            <svg class="nav-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-cursor"></use>
+            </svg><span data-coreui-i18n="buttons">Buttons</span></a>
+           <ul class="nav-group-items compact">
+            <li class="nav-item"><a class="nav-link" href="buttons/buttons.html"><span class="nav-icon"><span class="nav-icon-bullet"></span></span> Buttons</a></li>
+            <li class="nav-item"><a class="nav-link" href="buttons/button-group.html"><span class="nav-icon"><span class="nav-icon-bullet"></span></span> Buttons Group</a></li>
+            <li class="nav-item"><a class="nav-link" href="buttons/loading-buttons.html"><span class="nav-icon"><span class="nav-icon-bullet"></span></span> Loading Buttons<span class="badge bg-danger-gradient ms-auto">PRO</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="buttons/dropdowns.html"><span class="nav-icon"><span class="nav-icon-bullet"></span></span> Dropdowns</a></li>
+          </ul>
+         </li> -->
+         <div class="row">
+  <div class="col-4">
+    <div class="list-group" id="list-tab" role="tablist">
+      <!-- <a class="list-group-item list-group-item-action" id="list-settings-list" data-coreui-toggle="list" routerLink="/admin" role="tab" aria-controls="list-settings">Admin</a> -->
+      <a class="list-group-item list-group-item-action" id="list-home-list" data-coreui-toggle="list" routerLink="/admin/users" role="tab" aria-controls="list-home">Users</a>
+      <a class="list-group-item list-group-item-action" id="list-profile-list" data-coreui-toggle="list" routerLink="/admin/projects" role="tab" aria-controls="list-profile">Projects</a>
+      <a class="list-group-item list-group-item-action" id="list-messages-list" data-coreui-toggle="list" routerLink="/admin/projecttasks" role="tab" aria-controls="list-messages">Tasks</a>
+      <a class="list-group-item list-group-item-action" id="list-messages-list" data-coreui-toggle="list" routerLink="/" role="tab" (click)="logout()" aria-controls="list-messages">LogOut</a>
+
+    </div>
+  </div>
+  <!-- <div class="col-8">
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">...</div>
+      <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
+      <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
+      <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+    </div>
+  </div> -->
+</div>
         <li class="nav-title"><span data-coreui-i18n="systemUtilization">System Utilization</span></li>
         <li class="nav-item px-3 pb-2 d-narrow-none">
           <div class="text-uppercase small fw-bold mb-1" data-coreui-i18n="cpuUsage">CPU Usage</div>
@@ -685,8 +716,8 @@
       </header>
     <router-outlet></router-outlet>
       <footer class="footer px-4">
-        <div><a href="https://coreui.io">CoreUI </a><a href="https://coreui.io/product/bootstrap-dashboard-template/">Bootstrap Admin Template</a> © 2025 creativeLabs.</div>
-        <div class="ms-auto">Powered by&nbsp;<a href="https://coreui.io/bootstrap/docs/">CoreUI PRO UI Components</a></div>
+        <div>Github Account</div>
+        <div class="ms-auto">Powered by&nbsp;<a routerLink="https://github.com/Rutu8">Github Profile</a></div>
       </footer>
     </div>
   </body>

@@ -1,9 +1,14 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
+//using Microsoft.IdentityModel.JsonWebTokens;
+using Microsoft.IdentityModel.Tokens;
 using projectmanagementtoolProject.Context;
 using projectmanagementtoolProject.DTOs;
 using projectmanagementtoolProject.Models;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace projectmanagementtoolProject.Controllers
 {
@@ -12,9 +17,11 @@ namespace projectmanagementtoolProject.Controllers
     public class AuthenticationController : ControllerBase
     {
         ProjectDBContext dBContext;
-        public AuthenticationController(ProjectDBContext dBContext)
+        IConfiguration _configuration;
+        public AuthenticationController(ProjectDBContext dBContext, IConfiguration configuration)
         {
             this.dBContext = dBContext;
+            _configuration = configuration;
         }
 
 
@@ -24,27 +31,43 @@ namespace projectmanagementtoolProject.Controllers
             LoginStatus status = new LoginStatus();
             status.message = "failed";
             status.usertype = " ";
-            List<User> users = dBContext.Users.Where(u=>u.Email.Equals(login.Email) && u.Password.Equals(login.Password)).ToList();
-            if(users.Count > 0)
+           var users = dBContext.Users.FirstOrDefault(u=>u.Email.Equals(login.Email) && u.Password.Equals(login.Password));
+            if(users!= null)
             {
-                //var UserType = dBContext.Users.Where(u => u.Usertype.Equals("admin")).ToString();
-                if (status.users[0].Usertype == "admin")
+                status.status = "success";
+                status.message = "Login Successfully";
+            
+               var claims = new[]
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, users.Email),
+                new Claim("usertype", users.Usertype),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            };
+
+
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:key"]));
+                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+                var token = new JwtSecurityToken(
+                    issuer: _configuration["Jwt:Issuer"],
+                    audience: _configuration["Jwt:Audience"],
+                    claims:claims,
+                    expires: DateTime.Now.AddMinutes(Convert.ToDouble(_configuration["Jwt:ExpirMinutes"])),
+                    signingCredentials:creds
+                    );
+
+                return Ok(new
                 {
-                    status.status = "Success";
-                    status.message = "Login Successfully";
-                    status.usertype = "admin";
-                  
-                }
-                else
-                {
-                    status.status = "Success";
-                    status.message = "Login Successfully";
-                    status.usertype = "user";
-                    status.user = users[0];
-                  
-                }
+                    token = new JwtSecurityTokenHandler().WriteToken(token),
+                    expiration = token.ValidTo,
+                    usertype = users.Usertype?.Trim(),
+                    userId = users.Id,
+                    status = status.status,
+                    message = status.message
+
+                });
             }
-            else
+            else 
             {
                 status.status = "error";
                 status.message = "Login Failed";

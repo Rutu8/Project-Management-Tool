@@ -7,6 +7,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './users/users.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { UserComponent } from './user/user.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProjectComponent } from './project/project.component';
+import { ProjectTasksComponent } from './project-tasks/project-tasks.component';
 
 
 @NgModule({
@@ -15,11 +19,16 @@ import { TasksComponent } from './tasks/tasks.component';
     DashboardComponent,
     UsersComponent,
     ProjectsComponent,
-    TasksComponent
+    TasksComponent,
+    UserComponent,
+    ProjectComponent,
+    ProjectTasksComponent
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

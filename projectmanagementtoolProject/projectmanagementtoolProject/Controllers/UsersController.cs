@@ -37,7 +37,7 @@ namespace projectmanagementtoolProject.Controllers
             return Ok(user);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] User user)
         {
             User users = Dbcontext.Users.Find(id);
@@ -54,11 +54,21 @@ namespace projectmanagementtoolProject.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
+            //Project project = new Project();
+            //List<Project> list = Dbcontext.Projects.ToList();
+            
             User user= Dbcontext.Users.Find(id);
             Dbcontext.Remove(user);
             Dbcontext.SaveChanges();
             return Ok(user);
         }
+
+        //[HttpGet("user/{email}")]
+        //public IActionResult getbyEmail(string email)
+        //{
+        //    List<User> users = Dbcontext.Users.Where(u=>u.email==Email).ToList();
+        //    return Ok(users);
+        //}
 
 
     }
