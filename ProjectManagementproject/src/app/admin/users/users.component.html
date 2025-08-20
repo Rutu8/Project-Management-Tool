@@ -32,6 +32,7 @@
                           <td>{{user.usertype}}</td>
                           <td><a class="btn btn-info" routerLink="/admin/user/{{user.id}}">Edit</a></td>
                           <td><button class="btn btn-danger" (click)="delete(user.id)">Remove</button></td>
+                          <td><a routerLink="/admin/projecttasks/{{user.id}}" class="btn btn-primary">Tasks</a></td>
                         </tr>
                       </tbody>
                     </table>

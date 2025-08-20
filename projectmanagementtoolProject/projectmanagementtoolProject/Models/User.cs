@@ -32,6 +32,12 @@ public partial class User
     [StringLength(100)]
     public string? Usertype { get; set; }
 
+    [InverseProperty("User")]
+    public virtual ICollection<Job>? Jobs { get; set; } = new List<Job>();
+
     [InverseProperty("Owner")]
     public virtual ICollection<Project>? Projects { get; set; } = new List<Project>();
+
+    [InverseProperty("User")]
+    public virtual ICollection<UserJob>? UserJobs { get; set; } = new List<UserJob>();
 }

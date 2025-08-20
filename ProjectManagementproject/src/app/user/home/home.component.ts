@@ -9,6 +9,7 @@ import { CommonService } from 'src/app/shared/common.service';
 export class HomeComponent implements OnInit {
   projects:any
   id:any;
+  jobs:any;
   constructor(private api:CommonService){}
 
   ngOnInit(): void {
@@ -19,6 +20,12 @@ export class HomeComponent implements OnInit {
       console.log(this.projects);
 
       console.log(result);
+
+    })
+
+     this.api.get("api/users/jobs/"+this.id).subscribe((result:any)=>{
+      console.log(result);
+      this.jobs= result.length;
 
     })
 

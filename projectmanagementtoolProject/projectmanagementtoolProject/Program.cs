@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using projectmanagementtoolProject.Context;
+using projectmanagementtoolProject.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ProjectDBContext>(Options => Options.UseSqlServer(builder.Configuration.GetConnectionString("dBConstr") ));
+//builder.Services.AddDbContext<ProjectManagementtoolContext>(Options => Options.UseSqlServer(builder.Configuration.GetConnectionString("dBConstr")));
 
 //Configure JWT Authentication
 var key = builder.Configuration["Jwt:Key"];

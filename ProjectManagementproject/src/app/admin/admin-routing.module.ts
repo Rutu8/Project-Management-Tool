@@ -21,7 +21,9 @@ const routes: Routes = [
     {path:"project", component:ProjectComponent},
     {path:"project/:id", component:ProjectComponent},
     {path:"project/:ownerId", component:ProjectComponent},
-    {path:"projecttasks", component:ProjectTasksComponent}
+    {path:"projecttasks", component:ProjectTasksComponent},
+    {path:"projecttasks/:userId", component:ProjectTasksComponent}
+
 
   ]
 

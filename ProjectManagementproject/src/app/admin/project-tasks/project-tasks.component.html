@@ -1,3 +1,11 @@
+<nav aria-label="breadcrumb">
+            <ol class="breadcrumb m-2">
+              <li class="breadcrumb-item"><a routerLink="/admin" data-coreui-i18n="home">Home</a>
+              </li>
+              <li class="breadcrumb-item active"><span data-coreui-i18n="dashboard" routerLink="/admin/projecttasks">user Task - {{user.name}}</span>
+              </li>
+            </ol>
+          </nav>
 <div class="container">
   <div class="row">
     <div class="col-lg-6">
@@ -12,7 +20,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let alltask of alltasks; let i= index">
+                <td>{{i+1}}</td>
+                <td>{{alltask.title}}</td>
+                <td><button class="btn btn-info" (click)="assign(alltask.id)">Assign</button></td>
               </tr>
             </tbody>
           </table>
@@ -31,7 +42,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let usertask of usertask; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{usertask.title}}</td>
+                <td><button class="btn btn-danger" (click)="unassign(usertask.id)">Unassign</button></td>
               </tr>
             </tbody>
           </table>

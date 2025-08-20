@@ -1,10 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CommonService } from 'src/app/shared/common.service';
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.css']
 })
-export class TasksComponent {
+export class TasksComponent implements OnInit {
+  id:any;
+  jobs:any;
+constructor(private api:CommonService, private router:Router) {
+
+}
+  ngOnInit(): void {
+    this.id=localStorage.getItem("User Id");
+    this.api.get("api/users/jobs/"+this.id).subscribe((result:any)=>{
+      console.log(result);
+      this.jobs= result;
+
+    })
+  }
 
 }

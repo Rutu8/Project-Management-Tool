@@ -66,9 +66,9 @@
                           <th>Status</th>
                           <th>Project Id</th>
                           <th>Priority</th>
+                          <!-- <th>User Id</th> -->
                           <th>Update</th>
                           <th>Remove Task</th>
-                          <th>Mark as Completed</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -77,9 +77,9 @@
                           <td>{{task.status}}</td>
                           <td>{{task.projectId}}</td>
                           <td>{{task.priority}}</td>
+                          <!-- <td>{{task.userId}}</td> -->
                           <td><a class="btn btn-info" (click)="update(task)">Update</a></td>
                           <td><a class="btn btn-danger" (click)="delete(task.id)">delete</a></td>
-                          <td><input type="checkbox" name="check" id="">lkj</td>
                         </tr>
                       </tbody>
                     </table>

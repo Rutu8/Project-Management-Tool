@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using projectmanagementtoolProject.Context;
 using projectmanagementtoolProject.Models;
+using System.Threading.Tasks;
 
 namespace projectmanagementtoolProject.Controllers
 {
@@ -11,6 +12,7 @@ namespace projectmanagementtoolProject.Controllers
     public class ProjectsController : ControllerBase
     {
         ProjectDBContext dbContext;
+        string message = "";
         public ProjectsController(ProjectDBContext dbContext)
         {
             this.dbContext = dbContext;
@@ -58,12 +60,23 @@ namespace projectmanagementtoolProject.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public bool Delete(int id)
         {
-            Project project = dbContext.Projects.Find(id);
-            dbContext.Remove(project);  
-            dbContext.SaveChanges();
-            return Ok(project);
+            var projects = dbContext.Projects.Where(p => dbContext.Jobs.Any(j => j.ProjectId == id)).ToList();
+            if(projects.Count > 0)
+            {
+                message = "Given Project Cannot be deleted";
+                return false;
+            }
+            else
+            {
+                Project project = dbContext.Projects.Find(id);
+                dbContext.Remove(project);
+                dbContext.SaveChanges();
+                return true;
+
+            }
+               
         }
 
         [HttpGet("tasks")]
@@ -95,12 +108,23 @@ namespace projectmanagementtoolProject.Controllers
         }
 
         [HttpDelete("tasks/{id}")]
-        public IActionResult Deletetask(int id)
+        public bool Deletetask(int id)
         {
-            Job job = dbContext.Jobs.Find(id);
-            dbContext.Remove(job);
-            dbContext.SaveChanges();
-            return Ok(job);
+            var jobs = dbContext.Jobs.Where(j=>dbContext.UserJobs.Any(uj=>uj.JobId==id)).ToList();
+            if (jobs.Count > 0)
+            {
+                message = "Job Cannot be deleted";
+                return false;
+            }
+            else
+            {
+                Job job = dbContext.Jobs.Find(id);
+                dbContext.Remove(job);
+                dbContext.SaveChanges();
+                return true;
+
+            }
+               
         }
 
         [HttpGet("tasks/byid/{id}")]
@@ -123,6 +147,18 @@ namespace projectmanagementtoolProject.Controllers
             List<Job> job = dbContext.Jobs.Where(j=>j.Id == id).ToList();
             return Ok(job);
         }
+
+        //[HttpGet("tasks/usertask/{userid}")]
+        //public IActionResult GettaskUsers(int userid)
+        //{
+        //    var jobs= dbContext.Jobs.Select(t => t.User).Where(t => t.Id == userid).ToList();
+        //    return Ok(jobs);
+        //}
+
+       
+
+
+
 
     }
 }

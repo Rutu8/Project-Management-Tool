@@ -26,8 +26,17 @@ public partial class Job
     [Column("priority")]
     [StringLength(500)]
     public string? Priority { get; set; }
-        
+
+    public int? UserId { get; set; }
+
     [ForeignKey("ProjectId")]
     [InverseProperty("Jobs")]
-    public virtual Project? Project { get; set; }
+    public virtual Project? Project { get; set; } = null!;
+
+    [ForeignKey("UserId")]
+    [InverseProperty("Jobs")]
+    public virtual User? User { get; set; }
+
+    [InverseProperty("Job")]
+    public virtual ICollection<UserJob>? UserJobs { get; set; } = new List<UserJob>();
 }

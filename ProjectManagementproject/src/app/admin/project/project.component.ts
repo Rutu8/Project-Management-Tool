@@ -2,6 +2,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CommonService } from 'src/app/shared/common.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-project',
@@ -55,7 +56,15 @@ export class ProjectComponent implements OnInit {
   submit(data:any){
     console.log(data);
     this.api.put("api/projects/"+this.id,data).subscribe((result:any)=>{
+      Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Project Updated",
+      showConfirmButton: false,
+       timer: 1500
+});
         console.log(result);
+        this.router.navigate(['/admin/projects'])
     })
 
     // this.api.post("api/projects/", data).subscribe((result:any)=>{

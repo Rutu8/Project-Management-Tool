@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from 'src/app/shared/common.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user',
@@ -51,14 +52,29 @@ export class UserComponent implements OnInit {
     if(this.id == null){
        this.api.post("api/users", data).subscribe((result:any)=>{
           console.log(result);
+           Swal.fire({
+  position: "center",
+  icon: "success",
+  title: "Your User has been saved",
+  showConfirmButton: false,
+  timer: 1500
+});
         })
         this.router.navigate(["/admin/users"]);
+
 
 
       }
        else{
           this.api.put("api/users/" + this.id,data).subscribe((result:any)=>{
         console.log(result);
+         Swal.fire({
+  position: "center",
+  icon: "success",
+  title: "Your User has been Updated",
+  showConfirmButton: false,
+  timer: 1500
+});
       })
       this.router.navigate(["/admin/users"]);
 

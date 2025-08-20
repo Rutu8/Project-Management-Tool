@@ -26,8 +26,7 @@ public partial class Project
     [InverseProperty("Project")]
     public virtual ICollection<Job>? Jobs { get; set; } = new List<Job>();
 
-   
     [ForeignKey("OwnerId")]
     [InverseProperty("Projects")]
-    public virtual User? Owner { get; set; } 
+    public virtual User? Owner { get; set; } = null!;
 }

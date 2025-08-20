@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CommonService } from 'src/app/shared/common.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-projects',
@@ -17,9 +18,9 @@ export class ProjectsComponent implements OnInit {
   ngOnInit(): void {
     this.formdata= new FormGroup({
       id: new FormControl(""),
-      name:new FormControl(""),
-      description: new FormControl(""),
-      ownerId: new FormControl("")
+      name:new FormControl("", Validators.compose([Validators.required])),
+      description: new FormControl("", Validators.compose([Validators.required])),
+      ownerId: new FormControl("", Validators.compose([Validators.required]))
     })
 
     // this.id = JSON.parse(localStorage.getItem("User Id") || "[]");
@@ -46,10 +47,24 @@ export class ProjectsComponent implements OnInit {
     if(data.id != 0){
        this.api.put("api/projects/"+data.id, data).subscribe((result:any)=>{
         console.log(result);
+        Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Your Project has been Updated",
+  showConfirmButton: false,
+  timer: 1500
+});
       })
     }else{
        this.api.post("api/projects", data).subscribe((result:any)=>{
       console.log(result);
+      Swal.fire({
+  position: "center",
+  icon: "success",
+  title: "Your Project has been saved",
+  showConfirmButton: false,
+  timer: 1500
+});
     })
 
     }

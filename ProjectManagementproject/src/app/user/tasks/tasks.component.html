@@ -11,11 +11,12 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr class="align-middle">
-                          <td>1</td>
-                          <td></td>
-                          <td></td>
-
+                        <tr class="align-middle" *ngFor="let job of jobs; let i= index; ">
+                          <td>{{i+1}}</td>
+                          <td>{{job.title}}</td>
+                          <td>{{job.status}}</td>
+                          <td>{{job.projectId}}</td>
+                          <td>{{job.priority}}</td>
                         </tr>
                       </tbody>
                     </table>
