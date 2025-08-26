@@ -1,3 +1,11 @@
+<nav aria-label="breadcrumb">
+            <ol class="breadcrumb m-2">
+              <li class="breadcrumb-item"><a routerLink="/admin/projects" data-coreui-i18n="home">Projects</a>
+              </li>
+              <li class="breadcrumb-item active" *ngFor="let data of data"><span data-coreui-i18n="dashboard">Owner - {{data.name}}</span>
+              </li>
+            </ol>
+          </nav>
 <div class="container mt-2">
 <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
   <div class="col-md-4">
@@ -9,8 +17,8 @@
     <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" formControlName="description"></textarea>
   </div>
   <div class="col-md-4">
-    <label for="validationDefault01" class="form-label">OwnerId:</label>
-    <input type="text" class="form-control" id="validationDefault01" formControlName="ownerId">
+    <!-- <label for="validationDefault01" class="form-label">Owner Id:</label> -->
+    <input type="text" class="form-control" id="validationDefault01" formControlName="ownerId" hidden>
   </div>
   <div class="mb-3">
     <button class="btn btn-primary" type="submit">Submit form</button>

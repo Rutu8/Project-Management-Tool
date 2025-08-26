@@ -4,19 +4,19 @@
                       <thead>
                         <tr>
                           <th>Sr.No.</th>
+                          <th>Project Name</th>
                           <th>Title</th>
                           <th>Status</th>
-                          <th>Project Id</th>
                           <th>Priority</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr class="align-middle" *ngFor="let job of jobs; let i= index; ">
+                        <tr class="align-middle" *ngFor="let job of jobs; let i= index;">
                           <td>{{i+1}}</td>
-                          <td>{{job.title}}</td>
-                          <td>{{job.status}}</td>
-                          <td>{{job.projectId}}</td>
-                          <td>{{job.priority}}</td>
+                          <td>{{job.name}}</td>
+                          <td>{{job.job.title}}</td>
+                          <td>{{job.job.status}}</td>
+                          <td>{{job.job.priority}}</td>
                         </tr>
                       </tbody>
                     </table>

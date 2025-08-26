@@ -8,13 +8,14 @@
                   <h1>Login</h1>
                 <form [formGroup]="logindata" (ngSubmit)="login(logindata.value)">
                   <div class="input-group mb-3"><span class="input-group-text">
+                      <span *ngIf="logindata.controls.email.touched && logindata.controls.email.invalid" class="text-danger">Enter Valid Email address</span>
                       <svg class="icon">
                         <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
                       </svg></span>
-                      <!-- <span *ngIf="controls.email.touched & formcontrol.email">Enter Valid Email address</span> -->
                     <input class="form-control" type="text" placeholder="Enter a Email" formControlName="email"/>
                   </div>
                   <div class="input-group mb-4"><span class="input-group-text">
+                      <span *ngIf="logindata.controls.password.touched && logindata.controls.password.invalid" class="text-danger">Enter Valid Password</span>
                       <svg class="icon">
                         <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
                       </svg></span>

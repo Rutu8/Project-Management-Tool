@@ -4,17 +4,26 @@
               </li>
               <li class="breadcrumb-item active"><span data-coreui-i18n="dashboard" routerLink="/admin/tasks">Tasks</span>
               </li>
+
+<!-- {{tasks.name}} -->
             </ol>
+
           </nav>
+
            <div class="container">
+
           <form class="row g-3 m-2" [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
 
+  <div class="col-md-4">
+    <label for="validationDefault01" class="form-label">Project Name</label>
+    <input type="text" class="form-control" id="validationDefault01" readonly ngModel="{{name}}" formControlName="name">
+  </div>
   <div class="col-md-4">
     <label for="validationDefault01" class="form-label">Title:</label>
     <input type="text" class="form-control" id="validationDefault01" formControlName="title">
   </div>
    <div class="col-md-4">
-    <label for="validationDefault01" class="form-label">projectid:</label>
+    <label for="validationDefault01" class="form-label">Project id:</label>
     <input type="text" class="form-control" id="validationDefault01" value="{{projectId}}" ngModel="{{projectId}}" readonly formControlName="projectId">
   </div>
   <div class="col-md-4">
@@ -62,6 +71,7 @@
                     <table class="table table-striped border datatable">
                       <thead>
                         <tr>
+                          <th>Name of Project</th>
                           <th>Title</th>
                           <th>Status</th>
                           <th>Project Id</th>
@@ -73,11 +83,12 @@
                       </thead>
                       <tbody>
                         <tr class="align-middle" *ngFor="let task of tasks">
+                          <td>{{task.name}}</td>
                           <td>{{task.title}}</td>
                           <td>{{task.status}}</td>
                           <td>{{task.projectId}}</td>
                           <td>{{task.priority}}</td>
-                          <!-- <td>{{task.userId}}</td> -->
+                          <!-- <td>{{task.projectName}}</td> -->
                           <td><a class="btn btn-info" (click)="update(task)">Update</a></td>
                           <td><a class="btn btn-danger" (click)="delete(task.id)">delete</a></td>
                         </tr>

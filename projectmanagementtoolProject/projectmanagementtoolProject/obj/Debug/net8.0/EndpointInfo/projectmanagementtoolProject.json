@@ -87,6 +87,18 @@
         }
       }
     },
+    "/api/Projects/excel": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Projects/{id}": {
       "put": {
         "tags": [
@@ -257,6 +269,18 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Projects/tasks/excel": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -472,6 +496,18 @@
         }
       }
     },
+    "/api/Users/excel": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Users/{id}": {
       "get": {
         "tags": [
@@ -601,6 +637,18 @@
         }
       }
     },
+    "/api/Users/userjobs/excel": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Users/assigntask": {
       "post": {
         "tags": [
@@ -680,14 +728,10 @@
             "format": "int32"
           },
           "title": {
-            "maxLength": 500,
-            "minLength": 0,
             "type": "string",
             "nullable": true
           },
           "status": {
-            "maxLength": 500,
-            "minLength": 0,
             "type": "string",
             "nullable": true
           },
@@ -696,8 +740,6 @@
             "format": "int32"
           },
           "priority": {
-            "maxLength": 500,
-            "minLength": 0,
             "type": "string",
             "nullable": true
           },
@@ -744,14 +786,10 @@
             "format": "int32"
           },
           "name": {
-            "maxLength": 500,
-            "minLength": 0,
             "type": "string",
             "nullable": true
           },
           "description": {
-            "maxLength": 500,
-            "minLength": 0,
             "type": "string",
             "nullable": true
           },
@@ -768,6 +806,13 @@
           },
           "owner": {
             "$ref": "#/components/schemas/User"
+          },
+          "userJobs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserJob"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -780,32 +825,22 @@
             "format": "int32"
           },
           "name": {
-            "maxLength": 500,
-            "minLength": 0,
             "type": "string",
             "nullable": true
           },
           "email": {
-            "maxLength": 100,
-            "minLength": 0,
             "type": "string",
             "nullable": true
           },
           "mobileNo": {
-            "maxLength": 10,
-            "minLength": 0,
             "type": "string",
             "nullable": true
           },
           "password": {
-            "maxLength": 10,
-            "minLength": 0,
             "type": "string",
             "nullable": true
           },
           "usertype": {
-            "maxLength": 100,
-            "minLength": 0,
             "type": "string",
             "nullable": true
           },
@@ -852,8 +887,16 @@
             "type": "string",
             "format": "date-time"
           },
+          "projectId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
           "job": {
             "$ref": "#/components/schemas/Job"
+          },
+          "project": {
+            "$ref": "#/components/schemas/Project"
           },
           "user": {
             "$ref": "#/components/schemas/User"

@@ -13,10 +13,12 @@ export class ProjectTasksComponent implements OnInit {
   userid:any;
   user:any;
   alltasks:any;
+  project:any;
+  projectid:any;
 
   constructor(private api:CommonService, private route:ActivatedRoute){
     this.userid = this.route.snapshot.paramMap.get("userId");
-    console.log(this.userid);
+    // console.log(this.userid);
 
   }
 
@@ -25,33 +27,53 @@ export class ProjectTasksComponent implements OnInit {
       this.user=result;
     })
     this.bind();
+
+    // this.api.get("api/projects/owner/" +this.userid ).subscribe((result:any)=>{
+    //   console.log(result);
+
+    // })
+
+
+
+
   }
 
   bind(){
     this.api.get("api/users/jobs/"+ this.userid).subscribe((result:any)=>{
       this.usertask = result;
-      // console.log(result);
+      console.log(this.usertask);
+      this.project = this.usertask.filter((projectId:any)=>{
+        this.projectid = projectId.projectId;
+      })
 
       this.api.get("api/projects/tasks").subscribe((alltasks:any)=>{
-        console.log(alltasks);
-
         this.alltasks = alltasks.filter((task:any)=>{
           let found = false;
+        // console.log(task);
+
           this.usertask.forEach((t:any) => {
-            if(t.id == task.id){
+            if(t.job.id == task.id){
               found = true;
             }
           });
           return !found;
-        })
 
-      })
+        });
 
-    })
+
+      });
+
+    });
+
+
+
+
+
+
   }
 
   assign(jobId:number){
-    let data = {id:0, userId:this.userid, jobId:jobId }
+    let data = {id:0, userId:this.userid, jobId:jobId, projectId: this.projectid}
     this.api.post("api/users/assigntask", data).subscribe((result:any)=>{
       console.log(result);
       this.bind();

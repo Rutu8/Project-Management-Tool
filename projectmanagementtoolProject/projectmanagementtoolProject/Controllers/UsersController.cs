@@ -1,9 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ClosedXML.Excel;
+using DocumentFormat.OpenXml.InkML;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using projectmanagementtoolProject.Context;
 using projectmanagementtoolProject.Models;
+using System.Data;
+using System.Data.Common;
 namespace projectmanagementtoolProject.Controllers
+    
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -24,9 +29,53 @@ namespace projectmanagementtoolProject.Controllers
             return Ok(users);
         }
 
+        [NonAction]
+        public DataTable Listusers()
+        {
+            DataTable dt = new DataTable();
+            dt.TableName = "users";
+            dt.Columns.Add("id", typeof(int));
+            dt.Columns.Add("Name", typeof(string));
+            dt.Columns.Add("Email", typeof(string));
+            dt.Columns.Add("MobileNo", typeof(string));
+            dt.Columns.Add("Password", typeof(string));
+            dt.Columns.Add("Usertype", typeof(string));
+            var _list =Dbcontext.Users.ToList();
+            if (_list.Count > 0)
+            {
+                _list.ForEach(item =>
+                {
+                    dt.Rows.Add(item.Id, item.Name, item.Email, item.MobileNo, item.Password, item.Usertype);
+                });
+            }
+            return dt;
+        }
+
+
+        [HttpGet("excel")]
+        public IActionResult ExportData()
+        {
+            var users = Listusers();
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.AddWorksheet(users, "Users data");
+                using(MemoryStream ms = new MemoryStream())
+                {
+                    wb.SaveAs(ms);
+                    return File(ms.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheet.sheet", "users.xlsx");
+                }
+            }
+              
+        }
+
         [HttpPost]
         public IActionResult Post([FromBody] User User)
         {
+            //if (User.Userfile != null)
+            //{
+            //    string filename = Guid.NewGuid() + ".xsl";
+
+            //}
             Dbcontext.Users.Add(User);
             Dbcontext.SaveChanges();
             return Ok(User);
@@ -84,18 +133,60 @@ namespace projectmanagementtoolProject.Controllers
         //    return Ok(users);
         //}
         [HttpGet("jobs/{userid}")]
-        public IActionResult Listtasks(int userid)
+        public IActionResult listtasks(int userid)
         {
-            
-            var userJobs = Dbcontext.UserJobs.Where(uj => uj.UserId == userid).Select(uj => uj.Job).ToList();
+            //projects = dbContext.Projects.Where(p => p. == ownerId).Select(p => new { p.Owner.Name, Id = p.Id, title = p.Name, Description = p.Description, ownerId = p.OwnerId }).ToList();
+            //var userJobs = Dbcontext.UserJobs.Where(uj => uj.UserId == userid).Select(uj => uj.Job).ToList();
+            //var userjob = Dbcontext.UserJobs.Where(uj => uj.UserId == userid).Select
+            var userjob = Dbcontext.UserJobs.Where(uj => uj.UserId == userid).Select(uj => new {UserId = uj.User.Id, uj.Job, uj.Job.ProjectId, uj.Project.Name });
 
-            return Ok(userJobs);
+            return Ok(userjob);
         }
+
+        [NonAction]
+        public DataTable Listusersjobs()
+        {
+            DataTable dt = new DataTable();
+            dt.TableName = "userjobs";
+            dt.Columns.Add("id", typeof(int));
+            dt.Columns.Add("UserId", typeof(int));
+            dt.Columns.Add("JobId", typeof(int));
+            dt.Columns.Add("DateAssigned", typeof(System.DateTime));
+            dt.Columns.Add("ProjectId", typeof(int));
+            var _list = Dbcontext.UserJobs.ToList();
+            if (_list.Count > 0)
+            {
+                _list.ForEach(item =>
+                {
+                    dt.Rows.Add(item.Id, item.UserId, item.JobId, (item.DateAssigned).ToString(), item.ProjectId);
+                });
+            }
+            return dt;
+        }
+
+
+        [HttpGet("userjobs/excel")]
+        public IActionResult ExportUserjobs()
+        {
+            var userjobs = Listusersjobs();
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.AddWorksheet(userjobs, "Users job data");
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    wb.SaveAs(ms);
+                    return File(ms.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheet.sheet", "userjobs.xlsx");
+                }
+            }
+
+        }
+
 
         [HttpPost("assigntask")]
         public IActionResult AssignTask([FromBody] UserJob userjob)
         {
             userjob.DateAssigned = DateTime.Now;
+            //userjob.ProjectId = userjob.Project.Id;
             Dbcontext.UserJobs.Add(userjob);
             Dbcontext.SaveChanges();
             return Ok(userjob);
@@ -112,6 +203,9 @@ namespace projectmanagementtoolProject.Controllers
             Dbcontext.SaveChanges();
             return Ok();
         }
+
+
+
 
 
     }

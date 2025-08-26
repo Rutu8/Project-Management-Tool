@@ -16,6 +16,7 @@ export class TasksComponent implements OnInit {
   formdata:any;
   userid:any;
   data:any;
+  name:any;
   constructor(private route:ActivatedRoute, private api:CommonService){
     this.projectId = this.route.snapshot.paramMap.get("projectId");
     console.log(this.projectId);
@@ -33,11 +34,19 @@ export class TasksComponent implements OnInit {
      this.api.get("api/projects/tasks/"+this.projectId).subscribe((result:any)=>{
       console.log(result);
       this.tasks=result;
+      console.log(this.tasks);
+
+      result.filter((n:any)=>{
+        this.name=n.name
+
+      })
+
     //  this.data= {id:0,title: this.tasks.title, status:this.tasks.status, projectId:this.projectId, priority:this.tasks.priority , userId:this.userid}
 
     })
     this.formdata = new FormGroup({
       id:new FormControl(""),
+      name:new FormControl(""),
       title:new FormControl(""),
       status:new FormControl(""),
       projectId:new FormControl(""),
@@ -48,6 +57,7 @@ export class TasksComponent implements OnInit {
     update(data:any){
        this.formdata.patchValue({
           id:data.id,
+          name:data.name,
       title:data.title,
       status:data.status,
       projectId:data.projectId,
@@ -67,7 +77,6 @@ export class TasksComponent implements OnInit {
   showConfirmButton: false,
   timer: 1500
 });
-
         this.bind();
       })
 

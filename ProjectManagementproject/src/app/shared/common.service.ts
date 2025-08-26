@@ -10,9 +10,13 @@ export class CommonService {
 
   constructor(private http:HttpClient) { }
 
-  get(path:string){
+  get(path: string){
     return this.http.get(this.baseUrl+path)
   }
+
+  // getexcel(path:string, {observe:'response', responseType:'blob'}){
+  //   return this.http.get(this.baseUrl +  path)
+  // }
 
   post(path:string, body:any){
     return this.http.post(this.baseUrl+path, body)
@@ -29,5 +33,14 @@ export class CommonService {
 
   getbyid(path:string){
     return this.http.get(this.baseUrl+path)
+  }
+
+  common(result:any){
+     let filename = result.headers.get('content-disposition')?.split(';')[1].split('=')[1];
+    let blob:Blob = result.body as Blob;
+    let a = document.createElement('a');
+    a.download = filename;
+    a.href = window.URL.createObjectURL(blob);
+    a.click();
   }
 }

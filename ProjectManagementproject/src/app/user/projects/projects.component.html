@@ -1,55 +1,65 @@
 <nav aria-label="breadcrumb">
-            <ol class="breadcrumb m-2">
-              <li class="breadcrumb-item"><a routerLink="/user/home" data-coreui-i18n="home">Home</a>
-              </li>
-              <li class="breadcrumb-item active"><span data-coreui-i18n="dashboard" routerLink="/user/projects">projects</span>
-              </li>
-            </ol>
-          </nav>
-          <div class="container">
-<form class="m-2" [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
-  <div class="row mb-3">
-    <label for="title" class="col-sm-2 col-form-label">Title</label>
-    <div class="col-sm-10">
-      <!-- <span formControl=""></span> -->
-      <input type="title" class="form-control" id="title" formControlName="name">
-    </div>
-  </div>
-  <div class="row mb-3">
-    <label for="description" class="col-sm-2 col-form-label">Description</label>
-    <div class="col-sm-10">
-      <input type="description" class="form-control" id="description" formControlName="description">
-    </div>
-  </div>
-  <div class="row mb-3">
-    <label for="ownerId" class="col-sm-2 col-form-label">Owner Id</label>
-    <div class="col-sm-5">
-      <input type="ownerId" class="form-control" id="ownerId" formControlName="ownerId" value="{{id}}" [ngModel]="id">
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+  <ol class="breadcrumb m-2">
+    <li class="breadcrumb-item">
+      <a routerLink="/user/home" data-coreui-i18n="home">Home</a>
+    </li>
+    <li class="breadcrumb-item active">
+      <span data-coreui-i18n="dashboard" routerLink="/user/projects">projects</span>
+    </li>
+  </ol>
+</nav>
+<div class="container">
+  <form class="m-2" [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
+    <div class="row mb-3">
+      <span *ngIf="formdata.controls.title.touched" class="text-danger">Title is required</span>
 
- <div class="tab-content rounded-bottom mt-3">
-                  <div class="tab-pane p-2 active preview" role="tabpanel" id="preview-1000">
-                    <table class="table table-striped border datatable">
-                      <thead>
-                        <tr>
-                          <th>Sr.No.</th>
-                          <th>Title</th>
-                          <th>Description</th>
-                           <th>Update</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr class="align-middle" *ngFor="let project of project; let i= index ">
-                          <td>{{i+1}}</td>
-                          <td>{{project.name}}</td>
-                          <td>{{project.description}}</td>
-                          <td><a class="btn btn-success" (click)="update(project)">Update</a></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+      <label for="title" class="col-sm-2 col-form-label">Title</label>
+
+      <div class="col-sm-10">
+        <!-- <span formControl=""></span> -->
+        <input type="title" class="form-control" id="title" formControlName="title"/>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <span *ngIf="formdata.controls.description.touched" class="text-danger">Description is required</span>
+
+      <label for="description" class="col-sm-2 col-form-label">Description</label>
+      <div class="col-sm-10">
+        <input type="description" class="form-control" id="description" formControlName="description" />
+      </div>
+    </div>
+    <div class="row mb-3">
+      <!-- <label for="ownerId" class="col-sm-2 col-form-label">Owner Id</label> -->
+      <div class="col-sm-5">
+        <input type="ownerId" class="form-control" id="ownerId" formControlName="ownerId" value="{{ id }}"
+          [ngModel]="id" hidden />
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <div class="tab-content rounded-bottom mt-3">
+    <div class="tab-pane p-2 active preview" role="tabpanel" id="preview-1000">
+      <table class="table table-striped border datatable">
+        <thead>
+          <tr>
+            <th>Sr.No.</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Update</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="align-middle" *ngFor="let project of project; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ project.title }}</td>
+            <td>{{ project.description }}</td>
+            <td>
+              <a class="btn btn-success" (click)="update(project)">Update</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

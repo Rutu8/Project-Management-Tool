@@ -7,6 +7,9 @@
             </ol>
           </nav>
 <div class="container">
+          <!-- <h4>Project Name: {{project.name}}</h4> -->
+
+
   <div class="row">
     <div class="col-lg-6">
       <div class="tab-content rounded-bottom">
@@ -20,10 +23,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let alltask of alltasks; let i= index">
+              <tr *ngFor="let row of alltasks; let i= index">
                 <td>{{i+1}}</td>
-                <td>{{alltask.title}}</td>
-                <td><button class="btn btn-info" (click)="assign(alltask.id)">Assign</button></td>
+                <td>{{row.title}}</td>
+                <td><button class="btn btn-info" (click)="assign(row.id)">Assign</button></td>
               </tr>
             </tbody>
           </table>
@@ -38,14 +41,16 @@
               <tr>
                 <th scope="col">Sr No.</th>
                 <th>Task</th>
+                <th>Project Name</th>
                 <th scope="col">Unassign</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let usertask of usertask; let i = index">
                 <td>{{i+1}}</td>
-                <td>{{usertask.title}}</td>
-                <td><button class="btn btn-danger" (click)="unassign(usertask.id)">Unassign</button></td>
+                <td>{{usertask.job.title}}</td>
+                <td>{{usertask.name}}</td>
+                <td><button class="btn btn-danger" (click)="unassign(usertask.job.id)">Unassign</button></td>
               </tr>
             </tbody>
           </table>

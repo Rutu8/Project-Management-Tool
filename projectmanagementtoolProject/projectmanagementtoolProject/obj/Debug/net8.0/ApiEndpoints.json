@@ -90,6 +90,16 @@
   },
   {
     "ContainingType": "projectmanagementtoolProject.Controllers.ProjectsController",
+    "Method": "ExportData",
+    "RelativePath": "api/Projects/excel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "projectmanagementtoolProject.Controllers.ProjectsController",
     "Method": "GetProjectsbyowner",
     "RelativePath": "api/Projects/owner/{ownerId}",
     "HttpMethod": "GET",
@@ -247,6 +257,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "projectmanagementtoolProject.Controllers.ProjectsController",
+    "Method": "ExportJobs",
+    "RelativePath": "api/Projects/tasks/excel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "projectmanagementtoolProject.Controllers.UsersController",
     "Method": "List",
     "RelativePath": "api/Users",
@@ -353,7 +373,17 @@
   },
   {
     "ContainingType": "projectmanagementtoolProject.Controllers.UsersController",
-    "Method": "Listtasks",
+    "Method": "ExportData",
+    "RelativePath": "api/Users/excel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "projectmanagementtoolProject.Controllers.UsersController",
+    "Method": "listtasks",
     "RelativePath": "api/Users/jobs/{userid}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -386,6 +416,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "projectmanagementtoolProject.Controllers.UsersController",
+    "Method": "ExportUserjobs",
+    "RelativePath": "api/Users/userjobs/excel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]

@@ -16,9 +16,13 @@ export class ProjectsComponent implements OnInit {
   constructor(private api:CommonService, private route:ActivatedRoute){}
 
   ngOnInit(): void {
+    this.bind();
+
+  }
+  bind(){
     this.formdata= new FormGroup({
       id: new FormControl(""),
-      name:new FormControl("", Validators.compose([Validators.required])),
+      title:new FormControl("", Validators.compose([Validators.required])),
       description: new FormControl("", Validators.compose([Validators.required])),
       ownerId: new FormControl("", Validators.compose([Validators.required]))
     })
@@ -36,7 +40,7 @@ export class ProjectsComponent implements OnInit {
   update(data:any){
     this.formdata.patchValue({
         id: data.id,
-        name: data.name,
+        title: data.title,
         description: data.description,
         ownerId: data.ownerId
       })
@@ -54,6 +58,7 @@ export class ProjectsComponent implements OnInit {
   showConfirmButton: false,
   timer: 1500
 });
+this.bind();
       })
     }else{
        this.api.post("api/projects", data).subscribe((result:any)=>{
@@ -65,12 +70,19 @@ export class ProjectsComponent implements OnInit {
   showConfirmButton: false,
   timer: 1500
 });
+this.bind();
     })
 
     }
 
 
 
+
+
+  }
+
+  get f(){
+    return this.formdata.controls;
   }
 
 }

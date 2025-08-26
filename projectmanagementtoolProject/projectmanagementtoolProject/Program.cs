@@ -69,6 +69,6 @@ app.MapControllers();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseCors(c=>c.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());    
+app.UseCors(c=>c.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().WithExposedHeaders("content-disposition"));    
 
 app.Run();
