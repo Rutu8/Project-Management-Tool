@@ -2,11 +2,12 @@
             <ol class="breadcrumb m-2">
               <li class="breadcrumb-item"><a routerLink="/admin/projects" data-coreui-i18n="home">Projects</a>
               </li>
-              <li class="breadcrumb-item active" *ngFor="let data of data"><span data-coreui-i18n="dashboard">Owner - {{data.name}}</span>
+              <li class="breadcrumb-item active"><span data-coreui-i18n="dashboard">Owner - {{data.ownerName}}</span>
               </li>
             </ol>
           </nav>
 <div class="container mt-2">
+  <!-- <h5>Name of the Owner: {{data.ownerName}}</h5> -->
 <form [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
   <div class="col-md-4">
     <label for="validationDefault01" class="form-label">Name:</label>

@@ -36,7 +36,7 @@ export class CommonService {
   }
 
   common(result:any){
-     let filename = result.headers.get('content-disposition')?.split(';')[1].split('=')[1];
+    let filename = result.headers.get('content-disposition')?.split(';')[1].split('=')[1];
     let blob:Blob = result.body as Blob;
     let a = document.createElement('a');
     a.download = filename;

@@ -14,16 +14,10 @@ export class ProjectComponent implements OnInit {
   id: any;
   data: any;
 
-  constructor(
-    private api: CommonService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {
+  constructor(private api: CommonService, private router: Router, private route: ActivatedRoute)
+  {
     this.id = this.route.snapshot.paramMap.get('id');
-    // this.ownerId = this.route.snapshot.paramMap.get("ownerId");
-    // this.ownerId = this.route.snapshot.params['ownerId'];
-
-    // console.log(this.ownerId);
+    console.log(this.id);
   }
 
   ngOnInit(): void {
@@ -34,24 +28,22 @@ export class ProjectComponent implements OnInit {
     this.formdata = new FormGroup({
       id: new FormControl(''),
       name: new FormControl(''),
+      // title: new FormControl(''),
       description: new FormControl(''),
       ownerId: new FormControl(''),
     });
     this.api.get('api/projects/project/' + this.id).subscribe((result: any) => {
+      console.log(result.name);
       console.log(result);
 
+      this.data = result;
+      // console.log(result[0].name);
       this.formdata.patchValue({
         id: result.id,
         name: result.name,
         description: result.description,
         ownerId: result.ownerId,
       });
-
-      this.api.get('api/projects/owner/' + result.ownerId).subscribe((data: any) => {
-          console.log(data);
-          this.data = data;
-          // console.log(this.data.name);
-        });
     });
   }
 

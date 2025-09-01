@@ -69,6 +69,7 @@ app.MapControllers();
 app.UseAuthentication();
 app.UseAuthorization();
 
+//WithExposedHeaders is excel file importing in angular
 app.UseCors(c=>c.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().WithExposedHeaders("content-disposition"));    
 
 app.Run();

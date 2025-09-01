@@ -28,8 +28,6 @@ tasks:any;
     this.api.get("api/projects/tasks").subscribe((result:any)=>{
       console.log(result);
       this.tasks = result.length;
-
-
     })
 
   }
@@ -38,7 +36,6 @@ tasks:any;
   this.http.get("https://localhost:7171/api/Projects/excel", {observe:'response', responseType:'blob'}).subscribe((result:any)=>{
     console.log(result);
     this.api.common(result);
-
     })
 }
 

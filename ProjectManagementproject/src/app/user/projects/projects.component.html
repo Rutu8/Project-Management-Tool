@@ -4,27 +4,28 @@
       <a routerLink="/user/home" data-coreui-i18n="home">Home</a>
     </li>
     <li class="breadcrumb-item active">
-      <span data-coreui-i18n="dashboard" routerLink="/user/projects">projects</span>
+      <span data-coreui-i18n="dashboard" routerLink="/user/projects">Projects</span>
     </li>
   </ol>
 </nav>
 <div class="container">
   <form class="m-2" [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
     <div class="row mb-3">
-      <span *ngIf="formdata.controls.title.touched" class="text-danger">Title is required</span>
 
       <label for="title" class="col-sm-2 col-form-label">Title</label>
 
       <div class="col-sm-10">
         <!-- <span formControl=""></span> -->
-        <input type="title" class="form-control" id="title" formControlName="title"/>
+      <span *ngIf="formdata.controls.name.touched" class="text-danger">Title is required</span>
+        <input type="title" class="form-control" id="title" formControlName="name"/>
       </div>
     </div>
     <div class="row mb-3">
-      <span *ngIf="formdata.controls.description.touched" class="text-danger">Description is required</span>
 
       <label for="description" class="col-sm-2 col-form-label">Description</label>
       <div class="col-sm-10">
+      <span *ngIf="formdata.controls.description.touched" class="text-danger">Description is required</span>
+
         <input type="description" class="form-control" id="description" formControlName="description" />
       </div>
     </div>
@@ -52,11 +53,14 @@
         <tbody>
           <tr class="align-middle" *ngFor="let project of project; let i = index">
             <td>{{ i + 1 }}</td>
-            <td>{{ project.title }}</td>
+            <td>{{ project.name }}</td>
             <td>{{ project.description }}</td>
             <td>
               <a class="btn btn-success" (click)="update(project)">Update</a>
             </td>
+            <!-- <td>
+              <a routerLink="user/tasks/:{{project.id}}">task</a>
+            </td> -->
           </tr>
         </tbody>
       </table>

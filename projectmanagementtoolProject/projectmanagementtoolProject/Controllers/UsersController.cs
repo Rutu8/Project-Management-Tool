@@ -3,6 +3,7 @@ using DocumentFormat.OpenXml.InkML;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging.Abstractions;
 using projectmanagementtoolProject.Context;
 using projectmanagementtoolProject.Models;
 using System.Data;
@@ -138,9 +139,11 @@ namespace projectmanagementtoolProject.Controllers
             //projects = dbContext.Projects.Where(p => p. == ownerId).Select(p => new { p.Owner.Name, Id = p.Id, title = p.Name, Description = p.Description, ownerId = p.OwnerId }).ToList();
             //var userJobs = Dbcontext.UserJobs.Where(uj => uj.UserId == userid).Select(uj => uj.Job).ToList();
             //var userjob = Dbcontext.UserJobs.Where(uj => uj.UserId == userid).Select
-            var userjob = Dbcontext.UserJobs.Where(uj => uj.UserId == userid).Select(uj => new {UserId = uj.User.Id, uj.Job, uj.Job.ProjectId, uj.Project.Name });
+            //var userjob = Dbcontext.UserJobs.Where(uj => uj.UserId == userid & uj.Project.Id == uj.ProjectId).Select(uj => new {UserId = uj.User.Id, uj.Job, uj.DateAssigned, uj.Job.ProjectId, uj.Project.Name});
+            var userjob = from uj in Dbcontext.UserJobs join p in Dbcontext.Projects on uj.Job.ProjectId equals p.Id into projGroup from Project in projGroup.DefaultIfEmpty() select new { uj.Id, uj.Job.ProjectId, ProjectName = Project != null ? Project.Name : "Unknown", uj.Job, uj.DateAssigned, uj.UserId };
+            var result = userjob.ToList();
 
-            return Ok(userjob);
+            return Ok(result);
         }
 
         [NonAction]

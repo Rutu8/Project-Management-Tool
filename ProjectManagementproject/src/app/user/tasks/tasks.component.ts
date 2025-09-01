@@ -19,11 +19,11 @@ export class TasksComponent implements OnInit {
       console.log(result);
       this.jobs = result;
 
-      result.filter((t: any) => {
-        this.projectid = t.job.projectid;
-        this.api.get('api/projects/project/' + this.projectid);
-        this.project = result;
-      });
-    });
+      // result.filter((t: any) => {
+      //   this.projectid = t.job.projectid;
+      //   this.api.get('api/projects/project/' + this.projectid);
+      //   this.project = result;
+      // });
+    });    
   }
 }

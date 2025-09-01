@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormControlName, FormGroup } from '@angular/forms';
+import { FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { CommonService } from 'src/app/shared/common.service';
@@ -16,7 +16,7 @@ export class TasksComponent implements OnInit {
   formdata:any;
   userid:any;
   data:any;
-  name:any;
+
   constructor(private route:ActivatedRoute, private api:CommonService){
     this.projectId = this.route.snapshot.paramMap.get("projectId");
     console.log(this.projectId);
@@ -34,23 +34,15 @@ export class TasksComponent implements OnInit {
      this.api.get("api/projects/tasks/"+this.projectId).subscribe((result:any)=>{
       console.log(result);
       this.tasks=result;
-      console.log(this.tasks);
-
-      result.filter((n:any)=>{
-        this.name=n.name
-
-      })
-
-    //  this.data= {id:0,title: this.tasks.title, status:this.tasks.status, projectId:this.projectId, priority:this.tasks.priority , userId:this.userid}
-
+      console.log(this.tasks[0].name);
     })
     this.formdata = new FormGroup({
       id:new FormControl(""),
-      name:new FormControl(""),
-      title:new FormControl(""),
-      status:new FormControl(""),
-      projectId:new FormControl(""),
-      priority:new FormControl("")
+      name:new FormControl("", Validators.compose([Validators.required])),
+      title:new FormControl("", Validators.compose([Validators.required])),
+      status:new FormControl("", Validators.compose([Validators.required])),
+      projectId:new FormControl("", Validators.compose([Validators.required])),
+      priority:new FormControl("", Validators.compose([Validators.required]))
     })
   }
 
@@ -122,6 +114,13 @@ export class TasksComponent implements OnInit {
       text: "Your Task has been deleted.",
       icon: "success"
     });
+  // }else{
+  //    Swal.fire({
+  //     title: "not be deleted",
+  //     text: "Your Task has been deleted.",
+  //     icon: "success"
+  //   });
+
   }
 });
         this.bind();

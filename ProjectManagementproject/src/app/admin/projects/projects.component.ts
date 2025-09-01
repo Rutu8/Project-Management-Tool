@@ -14,7 +14,12 @@ export class ProjectsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.api.get("api/projects").subscribe((result:any)=>{
+    this.bind();
+
+  }
+
+  bind(){
+      this.api.get("api/projects").subscribe((result:any)=>{
       console.log(result);
       this.projects = result;
 
@@ -35,14 +40,15 @@ export class ProjectsComponent implements OnInit {
 }).then((result) => {
   if (result.isConfirmed) {
     Swal.fire({
-      title: "Deleted!",
-      text: "Project has been deleted.",
+      title: result.value,
+      text: "result",
       icon: "success"
     });
   }
 });
 
     })
+    this.bind();
   }
 
 }

@@ -12,11 +12,16 @@
       <div class="card-body">
 <form class="row g-3" [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
   <div class="col-md-6">
+
     <label class="form-label">Name</label>
+    <br>
+    <span *ngIf="formdata.controls.name.touched" class="text-danger">Name is required</span>
     <input type="text" class="form-control" formControlName="name">
   </div>
   <div class="col-md-6">
     <label class="form-label">Email</label>
+    <br>
+    <span *ngIf="formdata.controls.email.touched && formdata.controls.email.invalid" class="text-danger">Please enter valid Email address</span>
     <div class="input-group">
       <span class="input-group-text" id="inputGroupPrepend">@</span>
       <input type="text" class="form-control" aria-describedby="inputGroupPrepend" formControlName="email">
@@ -25,14 +30,20 @@
   </div>
    <div class="col-md-4">
     <label class="form-label">Mobile No</label>
+    <br>
+    <span *ngIf="formdata.controls.mobileNo.touched" class="text-danger">Mobile no is required</span>
     <input type="text" class="form-control" formControlName="mobileNo"/>
   </div>
   <div class="col-md-4">
     <label class="form-label">Password</label>
+    <br>
+    <span *ngIf="formdata.controls.password.touched && formdata.controls.password.invalid" class="text-danger">Please enter validate password</span>
     <input type="text" class="form-control" formControlName="password">
   </div>
   <div class="col-md-4">
     <label class="form-label">User Type</label>
+    <br>
+    <span *ngIf="formdata.controls.usertype.touched" class="text-danger">User type is required</span>
     <select class="form-select" formControlName="usertype">
       <option value="">Select</option>
       <option>Admin</option>
@@ -40,7 +51,7 @@
     </select>
   </div>
   <div class="col-12">
-    <button class="btn btn-primary" type="submit">Submit form</button>
+    <button class="btn btn-primary" [class.disabled]="formdata.invalid" type="submit">Submit form</button>
   </div>
 </form>
 </div>

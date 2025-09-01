@@ -22,7 +22,7 @@ export class ProjectsComponent implements OnInit {
   bind(){
     this.formdata= new FormGroup({
       id: new FormControl(""),
-      title:new FormControl("", Validators.compose([Validators.required])),
+      name:new FormControl("", Validators.compose([Validators.required])),
       description: new FormControl("", Validators.compose([Validators.required])),
       ownerId: new FormControl("", Validators.compose([Validators.required]))
     })
@@ -50,6 +50,8 @@ export class ProjectsComponent implements OnInit {
   submit(data:any){
     if(data.id != 0){
        this.api.put("api/projects/"+data.id, data).subscribe((result:any)=>{
+        console.log(data.id);
+
         console.log(result);
         Swal.fire({
   position: "top-end",

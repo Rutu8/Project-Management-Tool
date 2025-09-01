@@ -1,5 +1,7 @@
 ﻿using ClosedXML.Excel;
 using DocumentFormat.OpenXml.InkML;
+using DocumentFormat.OpenXml.Office.PowerPoint.Y2023.M02.Main;
+using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -90,16 +92,16 @@ namespace projectmanagementtoolProject.Controllers
         [HttpGet("project/{id}")]
         public IActionResult Get(int id)
         {
-            Project project = dbContext.Projects.Find(id);
+            //Project project = dbContext.Projects.Find(id);
+            var project = dbContext.Projects.Where(p => p.Id == id).Select(p => new { p.Id, p.Name, p.Description, p.OwnerId, OwnerName = p.Owner.Name }).FirstOrDefault();
             return Ok(project);
         }
+        
 
         [HttpGet("owner/{ownerId}")]
         public IActionResult GetProjectsbyowner(int ownerId)
         {
-            //List<Project> projects = dbContext.Projects.Where(p=>p.OwnerId==ownerId).ToList();
-            //var projects = dbContext.Projects.Include(p => p.Owner).Select(p => new { id = p.Id, Name=p.Name, Description= p.Description, ownerId= p.OwnerId, ownerName = p.Owner.Name}).ToList();
-            var projects = dbContext.Projects.Where(p => p.OwnerId == ownerId).Select(p=>new {p.Owner.Name, Id = p.Id, title= p.Name, Description = p.Description, ownerId = p.OwnerId }).ToList();
+            var projects = dbContext.Projects.Where(p => p.OwnerId == ownerId).Select(p=>new {Id = p.Id, name= p.Name, Description = p.Description, ownerId = p.OwnerId }).ToList();
             return Ok(projects);
         }
 
@@ -126,7 +128,8 @@ namespace projectmanagementtoolProject.Controllers
         [HttpGet("tasks")]
         public IActionResult Listtask()
         {
-            List<Job> list = dbContext.Jobs.ToList();
+            //List<Job> list = dbContext.Jobs.ToList();
+            var list = from t in dbContext.Jobs join p in dbContext.Projects on t.ProjectId equals p.Id into projGroup from Project in projGroup.DefaultIfEmpty() select new { t.Id, t.Title, t.Status, t.ProjectId, t.Priority, Project.Name };
             return Ok(list);
         }
 
@@ -196,8 +199,8 @@ namespace projectmanagementtoolProject.Controllers
             var jobs = dbContext.Jobs.Where(j => dbContext.UserJobs.Any(uj => uj.JobId == id)).ToList();
             if (jobs.Count > 0)
             {
-                message = "Job Cannot be deleted";
-                return false;
+                message = "Job cannot be deleted because job assigned to user";
+                return false;               
             }
             else
             {
@@ -220,10 +223,9 @@ namespace projectmanagementtoolProject.Controllers
         [HttpGet("tasks/{projectId}")]
         public IActionResult GettaskbyProjectid(int projectId)
         {
-            var job = dbContext.Jobs.Where(p => p.ProjectId == projectId).Select(p => new { p.Project.Name, Id = p.Id, title = p.Title, Status = p.Status,ProjectId = p.ProjectId, ownerId = p.ProjectId, Priority=p.Priority, UserId=p.UserId}).ToList();
+            var job = dbContext.Jobs.Where(p => p.ProjectId == projectId).Select(p => new { p.Project.Name, Id = p.Id, title = p.Title, Status = p.Status,ProjectId = p.ProjectId, ownerId = p.Project.OwnerId, Priority=p.Priority, UserId=p.UserId}).ToList();
            // var job = dbContext.Jobs.Where(j => j.ProjectId == projectId).Select(j => new{j.Id, j.Title,j.ProjectId, j.Status, j.Priority, ProjectName = j.Project.Name}).ToList();
 
-            //List<Job> job = dbContext.Jobs.Where(j=>j.ProjectId== projectId).ToList();
             return Ok(job);
         }
 

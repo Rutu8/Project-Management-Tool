@@ -12,7 +12,9 @@ const routes: Routes = [
     // {path:"dashboard", component:DashboardComponent},
     {path:"home", component:HomeComponent},
     {path:"projects", component:ProjectsComponent},
-    {path:"tasks", component:TasksComponent}
+    {path:"tasks", component:TasksComponent},
+     {path:"tasks/:id", component:TasksComponent},
+
   ]
   }
 ];

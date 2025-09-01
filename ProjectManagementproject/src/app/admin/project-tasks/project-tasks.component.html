@@ -2,7 +2,7 @@
             <ol class="breadcrumb m-2">
               <li class="breadcrumb-item"><a routerLink="/admin" data-coreui-i18n="home">Home</a>
               </li>
-              <li class="breadcrumb-item active"><span data-coreui-i18n="dashboard" routerLink="/admin/projecttasks">user Task - {{user.name}}</span>
+              <li class="breadcrumb-item active"><span data-coreui-i18n="dashboard" routerLink="/admin/projecttasks">User Task - {{user.name}}</span>
               </li>
             </ol>
           </nav>
@@ -18,6 +18,7 @@
             <thead>
               <tr>
                 <th scope="col">Sr No.</th>
+                <th>Project Name</th>
                 <th>Task</th>
                 <th scope="col">Assign Task</th>
               </tr>
@@ -25,6 +26,7 @@
             <tbody>
               <tr *ngFor="let row of alltasks; let i= index">
                 <td>{{i+1}}</td>
+                <td>{{row.name}}</td>
                 <td>{{row.title}}</td>
                 <td><button class="btn btn-info" (click)="assign(row.id)">Assign</button></td>
               </tr>
@@ -40,16 +42,16 @@
             <thead>
               <tr>
                 <th scope="col">Sr No.</th>
-                <th>Task</th>
                 <th>Project Name</th>
+                <th>Task</th>
                 <th scope="col">Unassign</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let usertask of usertask; let i = index">
                 <td>{{i+1}}</td>
+                <td>{{usertask.projectName}}</td>
                 <td>{{usertask.job.title}}</td>
-                <td>{{usertask.name}}</td>
                 <td><button class="btn btn-danger" (click)="unassign(usertask.job.id)">Unassign</button></td>
               </tr>
             </tbody>

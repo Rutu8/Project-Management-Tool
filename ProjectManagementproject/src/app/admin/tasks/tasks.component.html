@@ -1,59 +1,64 @@
 <nav aria-label="breadcrumb">
-            <ol class="breadcrumb m-2">
-              <li class="breadcrumb-item"><a routerLink="/admin" data-coreui-i18n="home">Home</a>
-              </li>
-              <li class="breadcrumb-item active"><span data-coreui-i18n="dashboard" routerLink="/admin/tasks">Tasks</span>
-              </li>
+  <ol class="breadcrumb m-2">
+    <li class="breadcrumb-item"><a routerLink="/admin" data-coreui-i18n="home">Home</a>
+    </li>
+    <li class="breadcrumb-item active"><span data-coreui-i18n="dashboard" routerLink="/admin/tasks">Tasks</span>
+    </li>
 
-<!-- {{tasks.name}} -->
-            </ol>
+    <!-- {{tasks.name}} -->
+  </ol>
 
-          </nav>
+</nav>
 
-           <div class="container">
+<div class="container">
+  <!-- <h4 class="text-start m-2">Project Name: {{this.tasks[0].name}}</h4> -->
+  <form class="row g-3 m-2" [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
 
-          <form class="row g-3 m-2" [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
-
-  <div class="col-md-4">
-    <label for="validationDefault01" class="form-label">Project Name</label>
-    <input type="text" class="form-control" id="validationDefault01" readonly ngModel="{{name}}" formControlName="name">
-  </div>
-  <div class="col-md-4">
-    <label for="validationDefault01" class="form-label">Title:</label>
-    <input type="text" class="form-control" id="validationDefault01" formControlName="title">
-  </div>
-   <div class="col-md-4">
-    <label for="validationDefault01" class="form-label">Project id:</label>
-    <input type="text" class="form-control" id="validationDefault01" value="{{projectId}}" ngModel="{{projectId}}" readonly formControlName="projectId">
-  </div>
-  <div class="col-md-4">
-    <label for="validationDefault02" class="form-label">Status:</label>
-    <input type="text" class="form-control" id="validationDefault02" formControlName="status">
-  </div>
-  <!-- <div class="col-md-4">
+    <div class="col-md-4">
+      <label for="validationDefault01" class="form-label">Project Name</label>
+      <span *ngIf="formdata.controls.name.required" class="text-danger">Enter valid project name</span>
+      <input type="text" class="form-control" id="validationDefault01" ngModel="{{tasks[0].name}}" value="{{tasks[0].name}}" formControlName="name" readonly>
+    </div>
+    <div class="col-md-4">
+      <label for="validationDefault01" class="form-label">Title:</label>
+      <span *ngIf="formdata.controls.title.touched" class="text-danger">Enter valid Task title</span>
+      <input type="text" class="form-control" id="validationDefault01" formControlName="title">
+    </div>
+    <div class="col-md-4">
+      <label for="validationDefault01" class="form-label">Project id:</label>
+      <span *ngIf="formdata.controls.projectId.required" class="text-danger">Enter valid project id</span>
+      <input type="text" class="form-control" id="validationDefault01" value="{{projectId}}" ngModel="{{tasks[0].projectId}}" formControlName="projectId" readonly>
+    </div>
+    <div class="col-md-4">
+      <label for="validationDefault02" class="form-label">Status:</label>
+      <span *ngIf="formdata.controls.status.touched" class="text-danger">Status is required</span>
+      <input type="text" class="form-control" id="validationDefault02" formControlName="status">
+    </div>
+    <!-- <div class="col-md-4">
     <label for="validationDefaultUsername" class="form-label">Project Id:</label>
     <div class="input-group">
       <span class="input-group-text" id="inputGroupPrepend2">@</span>
       <input type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2">
     </div>
   </div> -->
-  <div class="col-md-6">
-    <label for="validationDefault03" class="form-label">Priority</label>
-    <input type="text" class="form-control" id="validationDefault03" formControlName="priority">
-  </div>
-  <!-- <div class="col-md-3">
+    <div class="col-md-6">
+      <label for="validationDefault03" class="form-label">Priority</label>
+      <span *ngIf="formdata.controls.priority.touched" class="text-danger">Priority is required</span>
+      <input type="text" class="form-control" id="validationDefault03" formControlName="priority">
+    </div>
+    <!-- <div class="col-md-3">
     <label for="validationDefault04" class="form-label">State</label>
     <select class="form-select" id="validationDefault04">
       <option selected disabled value="">Choose...</option>
       <option>...</option>
     </select>
   </div> -->
-  <div class="col-md-3">
- <label for="customRange1" class="form-label">Example range</label>
-<input type="range" class="form-range" id="customRange1">
-  </div>
+    <!-- <div class="col-md-3">
+      <label for="customRange1" class="form-label">Example range</label>
+      <input type="range" class="form-range" id="customRange1">
+    </div> -->
 
-  <!-- <div class="col-12">
+    <!-- <div class="col-12">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="invalidCheck2">
       <label class="form-check-label" for="invalidCheck2">
@@ -61,39 +66,39 @@
       </label>
     </div>
   </div> -->
-  <div class="col-12">
-    <button class="btn btn-primary" type="submit">Submit form</button>
-  </div>
+    <div class="col-12">
+      <button class="btn btn-primary" [class.disabled]="!formdata.valid" type="submit">Submit form</button>
+    </div>
 
-</form>
- <div class="tab-content rounded-bottom mt-3">
-                  <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1000">
-                    <table class="table table-striped border datatable">
-                      <thead>
-                        <tr>
-                          <th>Name of Project</th>
-                          <th>Title</th>
-                          <th>Status</th>
-                          <th>Project Id</th>
-                          <th>Priority</th>
-                          <!-- <th>User Id</th> -->
-                          <th>Update</th>
-                          <th>Remove Task</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr class="align-middle" *ngFor="let task of tasks">
-                          <td>{{task.name}}</td>
-                          <td>{{task.title}}</td>
-                          <td>{{task.status}}</td>
-                          <td>{{task.projectId}}</td>
-                          <td>{{task.priority}}</td>
-                          <!-- <td>{{task.projectName}}</td> -->
-                          <td><a class="btn btn-info" (click)="update(task)">Update</a></td>
-                          <td><a class="btn btn-danger" (click)="delete(task.id)">delete</a></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                </div>
+  </form>
+  <div class="tab-content rounded-bottom mt-3">
+    <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1000">
+      <table class="table table-striped border datatable">
+        <thead>
+          <tr>
+            <th>Name of Project</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Project Id</th>
+            <th>Priority</th>
+            <!-- <th>User Id</th> -->
+            <th>Update</th>
+            <th>Remove Task</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="align-middle" *ngFor="let task of tasks">
+            <td>{{task.name}}</td>
+            <td>{{task.title}}</td>
+            <td>{{task.status}}</td>
+            <td>{{task.projectId}}</td>
+            <td>{{task.priority}}</td>
+            <!-- <td>{{task.projectName}}</td> -->
+            <td><a class="btn btn-info" (click)="update(task)">Update</a></td>
+            <td><a class="btn btn-danger" (click)="delete(task.id)">delete</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
