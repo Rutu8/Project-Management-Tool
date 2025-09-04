@@ -16,22 +16,22 @@
 
     <div class="col-md-4">
       <label for="validationDefault01" class="form-label">Project Name</label>
-      <span *ngIf="formdata.controls.name.required" class="text-danger">Enter valid project name</span>
-      <input type="text" class="form-control" id="validationDefault01" ngModel="{{tasks[0].name}}" value="{{tasks[0].name}}" formControlName="name" readonly>
+      <span *ngIf="formdata.controls.name.required && formdata.controls.name.invalid" class="text-danger">Enter valid project name</span>
+      <input type="text" class="form-control" id="validationDefault01" ngModel="{{name}}" formControlName="name" readonly>
     </div>
     <div class="col-md-4">
       <label for="validationDefault01" class="form-label">Title:</label>
-      <span *ngIf="formdata.controls.title.touched" class="text-danger">Enter valid Task title</span>
+      <span *ngIf="formdata.controls.title.touched && formdata.controls.title.invalid" class="text-danger">Enter valid Task title</span>
       <input type="text" class="form-control" id="validationDefault01" formControlName="title">
     </div>
     <div class="col-md-4">
       <label for="validationDefault01" class="form-label">Project id:</label>
-      <span *ngIf="formdata.controls.projectId.required" class="text-danger">Enter valid project id</span>
-      <input type="text" class="form-control" id="validationDefault01" value="{{projectId}}" ngModel="{{tasks[0].projectId}}" formControlName="projectId" readonly>
+      <span *ngIf="formdata.controls.projectId.required && formdata.controls.projectId.invalid" class="text-danger">Enter valid project id</span>
+      <input type="text" class="form-control" id="validationDefault01" ngModel="{{projectId}}" formControlName="projectId" readonly>
     </div>
     <div class="col-md-4">
       <label for="validationDefault02" class="form-label">Status:</label>
-      <span *ngIf="formdata.controls.status.touched" class="text-danger">Status is required</span>
+      <span *ngIf="formdata.controls.status.touched && formdata.controls.status.invalid" class="text-danger">Status is required</span>
       <input type="text" class="form-control" id="validationDefault02" formControlName="status">
     </div>
     <!-- <div class="col-md-4">
@@ -43,7 +43,7 @@
   </div> -->
     <div class="col-md-6">
       <label for="validationDefault03" class="form-label">Priority</label>
-      <span *ngIf="formdata.controls.priority.touched" class="text-danger">Priority is required</span>
+      <span *ngIf="formdata.controls.priority.touched && formdata.controls.priority.invalid" class="text-danger">Priority is required</span>
       <input type="text" class="form-control" id="validationDefault03" formControlName="priority">
     </div>
     <!-- <div class="col-md-3">
@@ -67,7 +67,7 @@
     </div>
   </div> -->
     <div class="col-12">
-      <button class="btn btn-primary" [class.disabled]="!formdata.valid" type="submit">Submit form</button>
+      <button class="btn btn-primary" type="submit">Submit form</button>
     </div>
 
   </form>

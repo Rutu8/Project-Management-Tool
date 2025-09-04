@@ -35,30 +35,29 @@ export class UsersComponent implements OnInit {
 
   }
 
-  delete(id:any){
-    this.api.delete("api/users/"+ id).subscribe((result:any)=>{
-      console.log(result);
-      Swal.fire({
-  title: "Are you sure?",
-  text: "You won't be able to revert this!",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#3085d6",
-  cancelButtonColor: "#d33",
-  confirmButtonText: "Yes, delete it!"
-}).then((result) => {
-  if (result.isConfirmed) {
-    Swal.fire({
-      title: "Deleted!",
-      text: "User has been deleted.",
-      icon: "success"
-    });
-  }
-});
-      this.bind();
-
-    })
-
-  }
+ delete(id: any) {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.api.delete("api/users/" + id).subscribe({
+        next: (res: any) => {
+          Swal.fire("Deleted!", res.message || "User has been deleted.", "success");
+          this.bind();
+        },
+        error: (err) => {
+          const errorMessage = err?.error?.message || "Could not delete the user.";
+          Swal.fire("Error", errorMessage, "error");
+        }
+      });
+    }
+  });
+}
 
 }

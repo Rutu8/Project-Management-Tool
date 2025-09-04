@@ -10,12 +10,21 @@
   <div class="col-12">
     <div class="card mb-4">
       <div class="card-body">
+        <div class="upload-container">
+  <h3>Upload Excel File</h3>
+
+  <input type="file" (change)="onFileSelected($event)" accept=".xls,.xlsx" class="form-control m-2" />
+  <button (click)="onUpload()" class="btn btn-primary m-2">Upload</button>
+
+  <p class="m-2" class="text-danger">{{ message }}</p>
+</div>
+<!-- <h3>Enter a user</h3> -->
 <form class="row g-3" [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
   <div class="col-md-6">
 
     <label class="form-label">Name</label>
     <br>
-    <span *ngIf="formdata.controls.name.touched" class="text-danger">Name is required</span>
+    <span *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid" class="text-danger">Name is required</span>
     <input type="text" class="form-control" formControlName="name">
   </div>
   <div class="col-md-6">
@@ -31,7 +40,7 @@
    <div class="col-md-4">
     <label class="form-label">Mobile No</label>
     <br>
-    <span *ngIf="formdata.controls.mobileNo.touched" class="text-danger">Mobile no is required</span>
+    <span *ngIf="formdata.controls.mobileNo.touched && formdata.controls.mobileNo.invalid" class="text-danger">Mobile no is required</span>
     <input type="text" class="form-control" formControlName="mobileNo"/>
   </div>
   <div class="col-md-4">
@@ -43,7 +52,7 @@
   <div class="col-md-4">
     <label class="form-label">User Type</label>
     <br>
-    <span *ngIf="formdata.controls.usertype.touched" class="text-danger">User type is required</span>
+    <span *ngIf="formdata.controls.usertype.touched && formdata.controls.usertype.invalid" class="text-danger">User type is required</span>
     <select class="form-select" formControlName="usertype">
       <option value="">Select</option>
       <option>Admin</option>
@@ -51,7 +60,7 @@
     </select>
   </div>
   <div class="col-12">
-    <button class="btn btn-primary" [class.disabled]="formdata.invalid" type="submit">Submit form</button>
+    <button class="btn btn-primary" type="submit">Submit form</button>
   </div>
 </form>
 </div>

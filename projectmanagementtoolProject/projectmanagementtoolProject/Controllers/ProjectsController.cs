@@ -106,20 +106,20 @@ namespace projectmanagementtoolProject.Controllers
         }
 
         [HttpDelete("{id}")]
-        public bool Delete(int id)
+        public IActionResult Delete(int id)
         {
             var projects = dbContext.Projects.Where(p => dbContext.Jobs.Any(j => j.ProjectId == id)).ToList();
             if(projects.Count > 0)
             {
                 message = "Given Project Cannot be deleted";
-                return false;
+                return Ok(new {message =  message});
             }
             else
             {
                 Project project = dbContext.Projects.Find(id);
-                dbContext.Remove(project);
+               dbContext.Remove(project);
                 dbContext.SaveChanges();
-                return true;
+                return Ok(new { success = "success", message ="Project is successfully deleted"});
 
             }
                
@@ -194,20 +194,20 @@ namespace projectmanagementtoolProject.Controllers
         }
 
         [HttpDelete("tasks/{id}")]
-        public bool Deletetask(int id)
+        public IActionResult Deletetask(int id)
         {
             var jobs = dbContext.Jobs.Where(j => dbContext.UserJobs.Any(uj => uj.JobId == id)).ToList();
             if (jobs.Count > 0)
             {
                 message = "Job cannot be deleted because job assigned to user";
-                return false;               
+                return Ok(new {message =  message});               
             }
             else
             {
                 Job job = dbContext.Jobs.Find(id);
                 dbContext.Remove(job);
                 dbContext.SaveChanges();
-                return true;
+                return Ok(new {success = "success", message = "Task successfully deleted"});
 
             }
 
@@ -236,12 +236,7 @@ namespace projectmanagementtoolProject.Controllers
             return Ok(job);
         }
 
-        //[HttpGet("tasks/usertask/{userid}")]
-        //public IActionResult GettaskUsers(int userid)
-        //{
-        //    var jobs= dbContext.Jobs.Select(t => t.User).Where(t => t.Id == userid).ToList();
-        //    return Ok(jobs);
-        //}
+      
 
        
 

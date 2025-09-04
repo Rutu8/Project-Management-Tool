@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace projectmanagementtoolProject.Models;
 
@@ -22,4 +23,7 @@ public partial class User
     public virtual ICollection<Project>? Projects { get; set; } = new List<Project>();
 
     public virtual ICollection<UserJob>? UserJobs { get; set; } = new List<UserJob>();
+
+    //[NotMapped]
+    //public IFormFile file { get; set; }
 }

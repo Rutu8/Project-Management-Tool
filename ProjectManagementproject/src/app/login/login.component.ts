@@ -64,9 +64,9 @@ export class LoginComponent implements OnInit {
   });
     }
 
-     get f(){
-    return this.logindata.controls;
-  }
+  //    get f(){
+  //   return this.logindata.controls;
+  // }
 
 
 

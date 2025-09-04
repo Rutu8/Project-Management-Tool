@@ -43,4 +43,20 @@ export class CommonService {
     a.href = window.URL.createObjectURL(blob);
     a.click();
   }
+
+
+  // uploadExcel(file: File){
+  //   const formData = new FormData();
+  //   formData.append('file', file);
+
+  //   return this.http.post(this.baseUrl, formData);
+  // }
+
+    uploadExcel(path:string, file: File) {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    return this.http.post(this.baseUrl+path, formData, {
+    responseType: 'text'});
+  }
 }

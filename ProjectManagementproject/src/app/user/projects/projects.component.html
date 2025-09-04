@@ -16,7 +16,7 @@
 
       <div class="col-sm-10">
         <!-- <span formControl=""></span> -->
-      <span *ngIf="formdata.controls.name.touched" class="text-danger">Title is required</span>
+      <span *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid" class="text-danger">Title is required</span>
         <input type="title" class="form-control" id="title" formControlName="name"/>
       </div>
     </div>
@@ -24,7 +24,7 @@
 
       <label for="description" class="col-sm-2 col-form-label">Description</label>
       <div class="col-sm-10">
-      <span *ngIf="formdata.controls.description.touched" class="text-danger">Description is required</span>
+      <span *ngIf="formdata.controls.description.touched && formdata.controls.description.invalid" class="text-danger">Description is required</span>
 
         <input type="description" class="form-control" id="description" formControlName="description" />
       </div>

@@ -436,15 +436,15 @@
               <use xlink:href="./assets/vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
             </svg>
           </button>
-          <form class="d-none d-sm-flex" role="search">
+          <!-- <form class="d-none d-sm-flex" role="search">
             <div class="input-group"><span class="input-group-text bg-body-secondary border-0 px-1" id="search-addon">
                 <svg class="icon icon-lg my-1 mx-2 text-body-secondary">
                   <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-search"></use>
                 </svg></span>
               <input class="form-control bg-body-secondary border-0" type="text" placeholder="Search..." aria-label="Search" aria-describedby="search-addon" data-coreui-i18n="[placeholder]search">
             </div>
-          </form>
-          <ul class="header-nav d-none d-md-flex ms-auto">
+          </form> -->
+          <!-- <ul class="header-nav d-none d-md-flex ms-auto">
             <li class="nav-item dropdown"><a class="nav-link" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><span class="d-inline-block my-1 mx-2 position-relative">
                   <svg class="icon icon-lg">
                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-bell"></use>
@@ -599,11 +599,11 @@
                 <div class="p-2"> <a class="btn btn-outline-primary w-100" href="#" data-coreui-i18n="viewAllMessages">View all messages</a></div>
               </div>
             </li>
-          </ul>
+          </ul> -->
           <ul class="header-nav ms-auto ms-md-0">
-            <li class="nav-item py-1">
+            <!-- <li class="nav-item py-1">
               <div class="vr h-100 mx-2 text-body text-opacity-75"></div>
-            </li>
+            </li> -->
             <li class="nav-item dropdown">
               <button class="btn btn-link nav-link" type="button" aria-expanded="false" data-coreui-toggle="dropdown">
                 <svg class="icon icon-lg">
@@ -620,21 +620,21 @@
                 </li>
                 <li>
                   <!-- <button class="dropdown-item d-flex align-items-center" type="button" data-coreui-language-value="es" onclick="i18next.changeLanguage(&quot;es&quot;)"> -->
-                    <svg class="icon icon-lg me-3">
+                    <!-- <svg class="icon icon-lg me-3">
                       <use xlink:href="vendors/@coreui/icons/svg/flag.svg#cif-es"></use>
-                    </svg>Español
+                    </svg>Español -->
                   <!-- </button> -->
                 </li>
                 <li>
                   <!-- <button class="dropdown-item d-flex align-items-center" type="button" data-coreui-language-value="pl" onclick="i18next.changeLanguage(&quot;pl&quot;)"> -->
-                    <svg class="icon icon-lg me-3">
+                    <!-- <svg class="icon icon-lg me-3">
                       <use xlink:href="vendors/@coreui/icons/svg/flag.svg#cif-pl"></use>
-                    </svg>Polski
+                    </svg>Polski -->
                   <!-- </button> -->
                 </li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
               <button class="btn btn-link nav-link" type="button" aria-expanded="false" data-coreui-toggle="dropdown">
                 <svg class="icon icon-lg theme-icon-active">
                   <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-contrast"></use>
@@ -663,14 +663,14 @@
                   </button>
                 </li>
               </ul>
-            </li>
-            <li class="nav-item py-1">
+            </li> -->
+            <!-- <li class="nav-item py-1">
               <div class="vr h-100 mx-2 text-body text-opacity-75"></div>
-            </li>
-            <li class="nav-item dropdown"><a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <div class="avatar avatar-md"><img class="avatar-img" src="assets/img/avatars/8.jpg" alt="user@email.com"><span class="avatar-status bg-success"></span></div>
+            </li> -->
+            <li class="nav-item dropdown"><a class="nav-link py-0" data-coreui-toggle="dropdown" routerLink="/admin" role="button" aria-haspopup="true" aria-expanded="false">
+                <div class="avatar avatar-md"><img class="avatar-img" src="assets/img/avatars/8.jpg" alt="admin@email.com"><span class="avatar-status bg-success"></span></div>
               </a>
-              <div class="dropdown-menu dropdown-menu-end pt-0">
+              <!-- <div class="dropdown-menu dropdown-menu-end pt-0">
                 <div class="dropdown-header bg-body-tertiary text-body-secondary fw-semibold rounded-top mb-2" data-coreui-i18n="account">Account</div><a class="dropdown-item" href="#">
                   <svg class="icon me-2">
                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-bell"></use>
@@ -704,14 +704,14 @@
                   <svg class="icon me-2">
                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-account-logout"></use>
                   </svg><span data-coreui-i18n="logout">Logout</span></a>
-              </div>
+              </div> -->
             </li>
           </ul>
-          <button class="header-toggler" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#aside')).show()" style="margin-inline-end: -12px">
+          <!-- <button class="header-toggler" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#aside')).show()" style="margin-inline-end: -12px">
             <svg class="icon icon-lg">
               <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-applications-settings"></use>
             </svg>
-          </button>
+          </button> -->
         </div>
       </header>
     <router-outlet></router-outlet>

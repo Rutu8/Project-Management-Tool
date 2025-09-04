@@ -13,6 +13,7 @@ D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\bi
 D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\bin\Debug\net8.0\ClosedXML.Parser.dll
 D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\bin\Debug\net8.0\DocumentFormat.OpenXml.dll
 D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\bin\Debug\net8.0\DocumentFormat.OpenXml.Framework.dll
+D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\bin\Debug\net8.0\ExcelDataReader.dll
 D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\bin\Debug\net8.0\ExcelNumberFormat.dll
 D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\bin\Debug\net8.0\Humanizer.dll
 D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
@@ -155,3 +156,12 @@ D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\ob
 D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\obj\Debug\net8.0\projectmanagementtoolProject.pdb
 D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\obj\Debug\net8.0\projectmanagementtoolProject.genruntimeconfig.cache
 D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\obj\Debug\net8.0\ref\projectmanagementtoolProject.dll
+D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\bin\Debug\net8.0\ExcelDataReader.DataSet.dll
+D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\bin\Debug\net8.0\EPPlus.dll
+D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\bin\Debug\net8.0\EPPlus.Interfaces.dll
+D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\bin\Debug\net8.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Json.dll
+D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
+D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\bin\Debug\net8.0\System.Security.Cryptography.Xml.dll
+D:\PojectManagement\projectmanagementtoolProject\projectmanagementtoolProject\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll

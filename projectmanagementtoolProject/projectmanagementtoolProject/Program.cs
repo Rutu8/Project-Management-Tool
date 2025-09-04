@@ -6,6 +6,8 @@ using Microsoft.IdentityModel.Tokens;
 using projectmanagementtoolProject.Context;
 using projectmanagementtoolProject.Models;
 using System.Text;
+System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,8 +18,12 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Serialize;
     options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
 });
+
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
 
 builder.Services.AddDbContext<ProjectDBContext>(Options => Options.UseSqlServer(builder.Configuration.GetConnectionString("dBConstr") ));
 //builder.Services.AddDbContext<ProjectManagementtoolContext>(Options => Options.UseSqlServer(builder.Configuration.GetConnectionString("dBConstr")));

@@ -18,7 +18,7 @@ export class ProjectTasksComponent implements OnInit {
 
   constructor(private api:CommonService, private route:ActivatedRoute){
     this.userid = this.route.snapshot.paramMap.get("userId");
-    // console.log(this.userid);
+    console.log(this.userid);
 
   }
 
@@ -40,14 +40,22 @@ export class ProjectTasksComponent implements OnInit {
 
   bind(){
     this.api.get("api/users/jobs/"+ this.userid).subscribe((result:any)=>{
+      console.log(this.userid);
+
       this.usertask = result;
-      console.log(this.usertask);
-      this.project = this.usertask.filter((projectId:any)=>{
-        this.projectid = projectId.projectId;
+      console.log(result);
+      this.project = this.usertask.filter((id:any)=>{
+        console.log(this.project);
+
       })
 
       this.api.get("api/projects/tasks").subscribe((alltasks:any)=>{
+
         this.alltasks = alltasks.filter((task:any)=>{
+        //    this.projectid = task.projectId;
+        // console.log(this.projectid);
+        console.log(task);
+
           let found = false;
         // console.log(task);
 
@@ -73,7 +81,9 @@ export class ProjectTasksComponent implements OnInit {
   }
 
   assign(jobId:number){
-    let data = {id:0, userId:this.userid, jobId:jobId, projectId: this.projectid}
+     const task = this.alltasks.find((t: any) => t.id === jobId);
+    let data = {id:0, userId:this.userid, jobId:jobId, projectId: task.projectId}
+
     this.api.post("api/users/assigntask", data).subscribe((result:any)=>{
       console.log(result);
       this.bind();

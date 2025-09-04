@@ -1,5 +1,6 @@
 ﻿using ClosedXML.Excel;
 using DocumentFormat.OpenXml.InkML;
+using ExcelDataReader;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,10 @@ using projectmanagementtoolProject.Context;
 using projectmanagementtoolProject.Models;
 using System.Data;
 using System.Data.Common;
+using System.IO;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using OfficeOpenXml;
 namespace projectmanagementtoolProject.Controllers
     
 {
@@ -72,16 +77,74 @@ namespace projectmanagementtoolProject.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] User User)
         {
-            //if (User.Userfile != null)
-            //{
-            //    string filename = Guid.NewGuid() + ".xsl";
-
-            //}
             Dbcontext.Users.Add(User);
             Dbcontext.SaveChanges();
             return Ok(User);
         }
 
+        [HttpPost("UploadExcelFile/file")]
+
+        public IActionResult UploadExcelFile(IFormFile file)
+        {
+            try
+            {
+                System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+                if (file == null || file.Length == 0)
+                {
+                    return BadRequest("No file uploaded");
+
+                }
+                var uploadfolder = $"{Directory.GetCurrentDirectory()}";
+                if (!Directory.Exists(uploadfolder))
+                {
+                    Directory.CreateDirectory(uploadfolder);
+                }
+                var filepath = Path.Combine(uploadfolder, file.FileName);
+                using (var stream = new FileStream(filepath, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+
+                using (var stream = System.IO.File.Open(filepath, FileMode.Open, FileAccess.Read))
+                {
+                    using (var reader = ExcelReaderFactory.CreateReader(stream))
+                    {
+                        bool isHeaderSkipped = false;
+                        do
+                        {
+                            while (reader.Read())
+                            {
+                                if (!isHeaderSkipped)
+                                {
+                                    isHeaderSkipped = true;
+                                    continue;
+                                }
+                                User u = new User();
+                                //u.Id = int.Parse(reader.GetValue(1).ToString());
+                                u.Name = reader.GetValue(1)?.ToString()?.Trim();
+                                u.Email = reader.GetValue(2)?.ToString()?.Trim();
+                                u.MobileNo = reader.GetValue(3)?.ToString()?.Trim();
+                                u.Password = reader.GetValue(4)?.ToString()?.Trim();
+                                u.Usertype = reader.GetValue(5)?.ToString()?.Trim();
+
+                                Dbcontext.Add(u);
+                                Dbcontext.SaveChanges();
+
+                            }
+                        } while (reader.NextResult());
+                    }
+                }
+                return Ok("successfully");
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+       
+      
+ 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -104,27 +167,24 @@ namespace projectmanagementtoolProject.Controllers
         }
 
         [HttpDelete("{id}")]
-        public bool Delete(int id)
+        public IActionResult Delete(int id)
         {
-            var users = Dbcontext.Users.Where(u => Dbcontext.Projects.Any(p => p.OwnerId == id) || Dbcontext.Jobs.Any(p => p.UserId == p.Id)).ToList();
+            var users = Dbcontext.Users.Where(u => Dbcontext.Projects.Any(p => p.OwnerId == id) || Dbcontext.UserJobs.Any(j => j.UserId == id)).ToList();
             if (users.Count > 0)
             { 
                 message = "User Cannot be Deleted";
-                return false;
+                return BadRequest(new {message= message});
             }
             else
             {
                 User user = Dbcontext.Users.Find(id);
-                Dbcontext.Remove(user);
+               Dbcontext.Remove(user);
                 message = "User Deleted Succcessfully";
                 Dbcontext.SaveChanges();
-                return true;
+                return Ok(new {success = true,  message=message });
 
             }
                
-
-
-
         }
 
         //[HttpGet("user/{email}")]
@@ -132,19 +192,35 @@ namespace projectmanagementtoolProject.Controllers
         //{
         //    List<User> users = Dbcontext.Users.Where(u => u.email == Email).ToList();
         //    return Ok(users);
+        ////}
+        //[HttpGet("jobs/{userid}")]
+        //public IActionResult listtasks(int userid)
+        //{
+        //    //projects = dbContext.Projects.Where(p => p. == ownerId).Select(p => new { p.Owner.Name, Id = p.Id, title = p.Name, Description = p.Description, ownerId = p.OwnerId }).ToList();
+        //    //var userJobs = Dbcontext.UserJobs.Where(uj => uj.UserId == userid).Select(uj => uj.Job).ToList();
+        //    //var userjob = Dbcontext.UserJobs.Where(uj => uj.UserId == userid).Select
+        //    //var userjob = Dbcontext.UserJobs.Where(uj => uj.UserId == userid & uj.Project.Id == uj.ProjectId).Select(uj => new {UserId = uj.User.Id, uj.Job, uj.DateAssigned, uj.Job.ProjectId, uj.Project.Name});
+        //    var userjob = from uj in Dbcontext.UserJobs join p in Dbcontext.Projects on uj.Job.ProjectId equals p.Id into projGroup from Project in projGroup.DefaultIfEmpty() select new { uj.Id, uj.Job.ProjectId, ProjectName = Project != null ? Project.Name : "Unknown", uj.Job, uj.DateAssigned, uj.UserId };
+        //    var result = userjob.ToList();
+
+        //    return Ok(result);
         //}
         [HttpGet("jobs/{userid}")]
         public IActionResult listtasks(int userid)
         {
-            //projects = dbContext.Projects.Where(p => p. == ownerId).Select(p => new { p.Owner.Name, Id = p.Id, title = p.Name, Description = p.Description, ownerId = p.OwnerId }).ToList();
-            //var userJobs = Dbcontext.UserJobs.Where(uj => uj.UserId == userid).Select(uj => uj.Job).ToList();
-            //var userjob = Dbcontext.UserJobs.Where(uj => uj.UserId == userid).Select
-            //var userjob = Dbcontext.UserJobs.Where(uj => uj.UserId == userid & uj.Project.Id == uj.ProjectId).Select(uj => new {UserId = uj.User.Id, uj.Job, uj.DateAssigned, uj.Job.ProjectId, uj.Project.Name});
-            var userjob = from uj in Dbcontext.UserJobs join p in Dbcontext.Projects on uj.Job.ProjectId equals p.Id into projGroup from Project in projGroup.DefaultIfEmpty() select new { uj.Id, uj.Job.ProjectId, ProjectName = Project != null ? Project.Name : "Unknown", uj.Job, uj.DateAssigned, uj.UserId };
+            Console.WriteLine($"Fetching tasks for UserId: {userid}");
+
+            var userjob = from uj in Dbcontext.UserJobs join p in Dbcontext.Projects on uj.Job.ProjectId equals p.Id into projGroup from Project in projGroup.DefaultIfEmpty() where uj.UserId == userid select new{ uj.Id, uj.ProjectId, ProjectName = Project != null ? Project.Name : "Unknown", uj.Job, uj.DateAssigned, uj.UserId };
+
             var result = userjob.ToList();
+            if (result.Count == 0)
+            {
+                Console.WriteLine("No jobs found for this user.");
+            }
 
             return Ok(result);
         }
+
 
         [NonAction]
         public DataTable Listusersjobs()

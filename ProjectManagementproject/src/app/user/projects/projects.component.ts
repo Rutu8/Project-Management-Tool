@@ -48,6 +48,15 @@ export class ProjectsComponent implements OnInit {
   }
 
   submit(data:any){
+     if (this.formdata.invalid) {
+        this.formdata.markAllAsTouched();
+        Swal.fire({
+          icon: 'error',
+          title: 'Form Incomplete',
+          text: 'Please fill in all required fields correctly.',
+        });
+        return;
+      }
     if(data.id != 0){
        this.api.put("api/projects/"+data.id, data).subscribe((result:any)=>{
         console.log(data.id);
@@ -83,8 +92,8 @@ this.bind();
 
   }
 
-  get f(){
-    return this.formdata.controls;
-  }
+  // get f(){
+  //   return this.formdata.controls;
+  // }
 
 }

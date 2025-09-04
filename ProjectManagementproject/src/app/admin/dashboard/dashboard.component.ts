@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import jsPDF from 'jspdf';
 import { CommonService } from 'src/app/shared/common.service';
 
 @Component({
@@ -55,6 +56,12 @@ downloaduserjobs(){
   this.http.get("https://localhost:7171/api/Users/userjobs/excel", {observe:'response', responseType:'blob'}).subscribe((result:any)=>{
   this.api.common(result);
   })
+}
+
+reportdownload(){
+  const doc = new jsPDF;
+  doc.addJS(this.projects)
+  doc.save("report.pdf")
 }
 
 

@@ -27,8 +27,6 @@ export class ProjectsComponent implements OnInit {
   }
 
   delete(id:any){
-    this.api.delete("api/projects/"+id).subscribe((result:any)=>{
-      console.log(result);
       Swal.fire({
   title: "Are you sure?",
   text: "You won't be able to revert this!",
@@ -39,16 +37,28 @@ export class ProjectsComponent implements OnInit {
   confirmButtonText: "Yes, delete it!"
 }).then((result) => {
   if (result.isConfirmed) {
-    Swal.fire({
-      title: result.value,
+     this.api.delete("api/projects/"+id).subscribe((result:any)=>{
+      console.log(result);
+      if(result.success){
+         Swal.fire({
+      title: result.message,
       text: "result",
       icon: "success"
     });
-  }
+      }else{
+         Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: result.message,
+            });
+      }
+    this.bind();
+
 });
+  }
+
 
     })
-    this.bind();
   }
 
 }
